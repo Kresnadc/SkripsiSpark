@@ -1,0 +1,183 @@
+[0m[[0m[0minfo[0m] [0m[0mPackaging E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\sparkmllibtest_2.11-0.1.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$run$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$run$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	TestKMeans$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\TestKMeans$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	XORShiftRandom$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\XORShiftRandom$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$initKMeansParallel$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$initKMeansParallel$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Instrumentation$$anonfun$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\Instrumentation$$anonfun$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$11.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$11.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$6$$anonfun$apply$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$6$$anonfun$apply$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$runAlgorithm$8.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$runAlgorithm$8.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Instrumentation$$anonfun$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\Instrumentation$$anonfun$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$6$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$6$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	TestKMeans$$anonfun$main$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\TestKMeans$$anonfun$main$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$initRandom$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$initRandom$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$10.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$10.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$9.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$9.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$13.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$13.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$initRandom$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$initRandom$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$run$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$run$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Instrumentation$$anonfun$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\Instrumentation$$anonfun$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$14.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$14.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$12.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$12.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	TestKMeans$$anonfun$1$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\TestKMeans$$anonfun$1$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$8.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$8.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	MLUtils$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\MLUtils$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$setMaxIterations$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$setMaxIterations$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Instrumentation$$anonfun$log$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\Instrumentation$$anonfun$log$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	TestKMeans$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\TestKMeans$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$2$$anonfun$apply$mcDI$sp$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$2$$anonfun$apply$mcDI$sp$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$setInitialModel$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$setInitialModel$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$dot$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$dot$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$gemm$7.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$gemm$7.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Instrumentation$$anonfun$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\Instrumentation$$anonfun$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$gemm$6.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$gemm$6.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LocalKMeans$$anonfun$kMeansPlusPlus$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\LocalKMeans$$anonfun$kMeansPlusPlus$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LocalKMeans$$anonfun$kMeansPlusPlus$1$$anonfun$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\LocalKMeans$$anonfun$kMeansPlusPlus$1$$anonfun$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LocalKMeans$$anonfun$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\LocalKMeans$$anonfun$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$gemv$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$gemv$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$setK$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$setK$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$11$$anonfun$apply$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$11$$anonfun$apply$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Instrumentation.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\Instrumentation.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$gemm$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$gemm$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	TestKMeans.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\TestKMeans.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$gemm$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$gemm$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$runAlgorithm$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$runAlgorithm$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$6$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$6$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$runAlgorithm$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$runAlgorithm$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$runAlgorithm$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$runAlgorithm$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$setInitializationSteps$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$setInitializationSteps$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$initKMeansParallel$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$initKMeansParallel$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$axpy$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$axpy$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LocalKMeans$$anonfun$kMeansPlusPlus$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\LocalKMeans$$anonfun$kMeansPlusPlus$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$setEpsilon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$setEpsilon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$initKMeansParallel$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$initKMeansParallel$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LocalKMeans$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\LocalKMeans$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$runAlgorithm$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$runAlgorithm$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	XORShiftRandom.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\XORShiftRandom.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	TestKMeans$$anonfun$main$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\TestKMeans$$anonfun$main$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LocalKMeans$$anonfun$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\LocalKMeans$$anonfun$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	MLUtils.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\MLUtils.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$runAlgorithm$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$runAlgorithm$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LocalKMeans$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\LocalKMeans$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$gemm$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$gemm$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$findClosest$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$findClosest$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$6$$anonfun$apply$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$6$$anonfun$apply$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Instrumentation$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\Instrumentation$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$gemm$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$gemm$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Instrumentation$$anonfun$1$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\Instrumentation$$anonfun$1$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Instrumentation$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\Instrumentation$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$6$$anonfun$7.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$6$$anonfun$7.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$runAlgorithm$7.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$runAlgorithm$7.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$gemm$8.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$gemm$8.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LocalKMeans$$anonfun$kMeansPlusPlus$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\LocalKMeans$$anonfun$kMeansPlusPlus$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$gemm$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$gemm$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$gemv$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$gemv$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LocalKMeans.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\LocalKMeans.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LocalKMeans$$anonfun$kMeansPlusPlus$1$$anonfun$apply$mcVI$sp$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\LocalKMeans$$anonfun$kMeansPlusPlus$1$$anonfun$apply$mcVI$sp$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	VectorWithNorm.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\VectorWithNorm.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$11$$anonfun$apply$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$11$$anonfun$apply$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BLAS$$anonfun$gemv$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\BLAS$$anonfun$gemv$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LocalKMeans$$anonfun$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\LocalKMeans$$anonfun$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$runAlgorithm$6.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$runAlgorithm$6.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LocalKMeans$$anonfun$kMeansPlusPlus$1$$anonfun$apply$mcVI$sp$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\LocalKMeans$$anonfun$kMeansPlusPlus$1$$anonfun$apply$mcVI$sp$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CustomKMeans$$anonfun$6.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  E:\Skripsi 2 - VSM\Program\SparkMLlibTest\target\scala-2.11\classes\CustomKMeans$$anonfun$6.class[0m
+[0m[[0m[0minfo[0m] [0m[0mDone packaging.[0m
