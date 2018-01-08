@@ -463,7 +463,7 @@ object CustomKMeans {
   /**
     * Returns the K-means cost of a given point against the given cluster centers.
     */
-  private def pointCost(
+  def pointCost(
                          centers: TraversableOnce[VectorWithNorm],
                          point: VectorWithNorm): Double =
     findClosest(centers, point)._2
