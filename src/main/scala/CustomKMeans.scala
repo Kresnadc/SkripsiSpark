@@ -23,13 +23,39 @@ class CustomKMeans (
                              private var initializationMode: String,
                              private var initializationSteps: Int,
                              private var epsilon: Double,
-                             private var seed: Long) extends Serializable with Logging {
+                             private var seed: Long,
+                             private var outputText: String,
+                             private var outputExt: String,
+                             private var jumlahElemenCluster: Array[Int],
+                             private var minValue:Double,
+                             private var maxValue:Double,
+                             private var variasi1: Double,
+                             private var variasi2: Double) extends Serializable with Logging {
 
   /**
     * Constructs a KMeans instance with default parameters: {k: 2, maxIterations: 20,
     * initializationMode: "k-means||", initializationSteps: 2, epsilon: 1e-4, seed: random}.
     */
-  def this() = this(2, 20, CustomKMeans.K_MEANS_PARALLEL, 2, 1e-4, new Random().nextLong())
+  def this() = this(2, 20, CustomKMeans.K_MEANS_PARALLEL, 2, 1e-4, new Random().nextLong(), "", "", null,
+                        Double.PositiveInfinity, Double.NegativeInfinity, 0.0, 0.0)
+
+  def printAllOutput(dataCount: Int): String ={
+    //jumlahElemenCluster.foreach(element => println(element))
+    var outputString: String = ""
+    for ( i <- 0 to (jumlahElemenCluster.length - 1)) {
+      print("Jumlah Elemen Cluster "+(i+1)+" :"+jumlahElemenCluster(i)+" ")
+      outputString += "Jumlah Elemen Cluster "+(i+1)+" :"+jumlahElemenCluster(i)+"\n"
+    }
+    outputString += "Nilai Maximum Elemen :"+maxValue+"\n"
+    outputString += "Nilai Minimum Elemen :"+minValue+"\n"
+    // Varian / Simpangan baku / Standar Deviasi
+
+    var standarDeviasi = scala.math.sqrt(((dataCount * variasi2) - (variasi1*variasi1)) / (dataCount * (dataCount-1)))
+    outputString += "Nilai Standar Deviasi :"+standarDeviasi+"\n"
+    println("standarDeviasi = "+ standarDeviasi)
+
+    (outputString)
+  }
 
   /**
     * Number of clusters to create (k).
@@ -209,6 +235,11 @@ class CustomKMeans (
     var cost = 0.0
     var iteration = 0
 
+    //Inisialisasi new Variable
+    var MinMaxBoolean: Boolean = false
+    var dataCount: Int = 0
+    var outputExt: String = ""
+
     val iterationStartTime = System.nanoTime()
 
     instr.foreach(_.logNumFeatures(centers.head.vector.size))
@@ -217,29 +248,61 @@ class CustomKMeans (
     while (iteration < maxIterations && !converged) {
       val costAccum = sc.doubleAccumulator
       val bcCenters = sc.broadcast(centers) //broadcast agar bisa dibaca secara distributed
-      println("======= Iterasi K-Means ke- :"+iteration+"=======")
 
+      println("Iterasi K-Means ke- :"+iteration)
+      this.outputText += "Iterasi K-Means ke- :"+iteration+"\n"
       // Find the new centers
       // Center baru setiap iterasi
       val newCenters = data.mapPartitions { points =>
         val thisCenters = bcCenters.value
         val dims = thisCenters.head.vector.size
 
-        //Array.fill membuat array dengan (panjang array) (isi array)
         val sums = Array.fill(thisCenters.length)(Vectors.zeros(dims))
         val counts = Array.fill(thisCenters.length)(0L)
+
+        //Counter Idx Elemen
         var indexElement = 1
+        jumlahElemenCluster = new Array[Int](k)
+
         points.foreach { point =>
           val (bestCenter, cost) = CustomKMeans.findClosest(thisCenters, point)
           costAccum.add(cost)
-          println("Elemen ke - "+indexElement)
-          indexElement += 1
-          println("Best Cluster : "+ bestCenter)
-          println("Best Distance : "+ cost)
           val sum = sums(bestCenter)
           BLAS.axpy(1.0, point.vector, sum) // alpha x plus y (ax+y)
           counts(bestCenter) += 1
+
+          //Counter Idx Elemen
+          println("Elemen ke - "+indexElement)
+          println("Best Cluster : "+ bestCenter)
+          println("Best Distance : "+ cost)
+          this.outputText += "Elemen ke - "+indexElement+"\n"
+          this.outputText += "Best Cluster : "+ bestCenter+"\n"
+          this.outputText += "Best Distance : "+ cost+"\n"
+          this.jumlahElemenCluster(bestCenter) += 1
+          indexElement += 1
+
+          //Min Max Deviasi
+          if(true){
+            var pointArr: Array[Double] = point.vector.toArray
+            var pointLength: Int = pointArr.length;
+            dataCount += pointLength
+            for ( i <- 0 to (pointLength - 1)) {
+              var currentValue = pointArr(i)
+              if(currentValue < minValue){
+                minValue = currentValue
+              }
+              if(currentValue > maxValue) {
+                maxValue = currentValue
+              }
+              variasi1 += currentValue
+              variasi2 += (currentValue*currentValue)
+            }
+          }
         }
+        if(!MinMaxBoolean){
+          this.outputExt += printAllOutput(dataCount)
+        }
+        MinMaxBoolean = true
         // indices indices: collection.immutable.Range adalah: returns a Range value from 0 to one less than the length of this mutable indexed sequence.
         // filter filter(p: (Int) ⇒ Boolean): IndexedSeq[Int] adalah: Selects all elements of this range which satisfy a predicate.
         // map map[B](f: (A) ⇒ B): IndexedSeq[B] adalah: [use case] Builds a new collection by applying a function to all elements of this immutable sequence.
@@ -256,6 +319,8 @@ class CustomKMeans (
 
       //bcCenters.destroy(blocking = false)
 
+      MinMaxBoolean = true
+
       //Update the cluster centers and costs
       converged = true
       newCenters.foreach { case (j, newCenter) =>
@@ -263,8 +328,7 @@ class CustomKMeans (
           converged = false
         }
         centers(j) = newCenter
-        println("ini indexCentroid = "+j)
-        println("ini newCentroid = "+newCenter.vector)
+        println("indexCentroid = "+j+", newCentroid = "+newCenter.vector)
       }
 
       cost = costAccum.value
@@ -285,6 +349,10 @@ class CustomKMeans (
 
     logInfo(s"The cost is $cost.")
     println(s"The cost is $cost.")
+
+    this.outputText += "KMeans converged in " + iteration + " iterations"
+    this.outputText += "Cost : " + cost + "\n"
+    println(outputText)
 
     new KMeansModel(centers.map(_.vector))
   }

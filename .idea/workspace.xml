@@ -2,10 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e8f3e36-d402-42ab-8052-61d2d598cb52" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/CustomKMeans.scala" afterPath="$PROJECT_DIR$/src/main/scala/CustomKMeans.scala" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/CustomKMeansModel.scala" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/PCAExample.scala" afterPath="$PROJECT_DIR$/src/main/scala/PCAExample.scala" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$10.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$10.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$11$$anonfun$apply$4.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$11$$anonfun$apply$5.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$11$$anonfun$apply$5.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$11.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$11.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$12.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$12.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$13.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$13.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$14.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$14.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$2$$anonfun$apply$mcDI$sp$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$2$$anonfun$apply$mcDI$sp$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$findClosest$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$findClosest$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$initKMeansParallel$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$initKMeansParallel$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$initKMeansParallel$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$initKMeansParallel$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$initKMeansParallel$3.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$initKMeansParallel$3.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$initRandom$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$initRandom$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$initRandom$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$initRandom$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$runAlgorithm$3.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$runAlgorithm$3.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$runAlgorithm$4.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$runAlgorithm$4.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$runAlgorithm$5.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$runAlgorithm$5.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$runAlgorithm$6.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$runAlgorithm$6.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$runAlgorithm$7.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$runAlgorithm$7.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$runAlgorithm$8.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$$anonfun$runAlgorithm$8.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans$.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/CustomKMeans.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/PCAExample$$anonfun$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/PCAExample$$anonfun$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/PCAExample$$anonfun$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/PCAExample$$anonfun$2.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/PCAExample$$anonfun$main$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/PCAExample$$anonfun$main$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/PCAExample$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/PCAExample$.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/TestKMeans$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/TestKMeans$.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/VectorWithNorm.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/VectorWithNorm.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,8 +73,8 @@
       <file leaf-file-name="TestKMeans.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/TestKMeans.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+            <state relative-caret-position="0">
+              <caret line="15" column="32" lean-forward="false" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -54,82 +82,108 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocalKMeans.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/LocalKMeans.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="33" column="28" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomKMeans.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CustomKMeans.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/CustomKMeans.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3008">
-              <caret line="465" column="2" lean-forward="false" selection-start-line="465" selection-start-column="2" selection-end-line="465" selection-end-column="2" />
+            <state relative-caret-position="399">
+              <caret line="335" column="5" lean-forward="true" selection-start-line="335" selection-start-column="5" selection-end-line="335" selection-end-column="5" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
-                <element signature="e#10382#10445#0" expanded="false" />
-                <element signature="e#10382#10850#0" expanded="false" />
-                <element signature="e#10854#11445#0" expanded="false" />
-                <element signature="e#10854#14069#0" expanded="false" />
-                <element signature="e#14159#14701#0" expanded="false" />
-                <element signature="e#15048#15464#0" expanded="false" />
+                <element signature="e#2766#2964#0" expanded="false" />
+                <element signature="e#2988#3206#0" expanded="false" />
+                <element signature="e#2988#3346#0" expanded="false" />
+                <element signature="e#3350#3404#0" expanded="false" />
+                <element signature="e#3452#3523#0" expanded="false" />
+                <element signature="e#3452#3742#0" expanded="false" />
+                <element signature="e#3746#3836#0" expanded="false" />
+                <element signature="e#3897#4162#0" expanded="false" />
+                <element signature="e#3897#4349#0" expanded="false" />
+                <element signature="e#4354#4424#0" expanded="false" />
+                <element signature="e#4485#4655#0" expanded="false" />
+                <element signature="e#4485#4916#0" expanded="false" />
+                <element signature="e#5053#5239#0" expanded="false" />
+                <element signature="e#5053#5422#0" expanded="false" />
+                <element signature="e#5426#5486#0" expanded="false" />
+                <element signature="e#5517#5581#0" expanded="false" />
+                <element signature="e#5517#5656#0" expanded="false" />
+                <element signature="e#5851#6053#0" expanded="false" />
+                <element signature="e#5851#6208#0" expanded="false" />
+                <element signature="e#6212#6370#0" expanded="false" />
+                <element signature="e#6212#6440#0" expanded="false" />
+                <element signature="e#6444#7391#0" expanded="false" />
+                <element signature="e#7395#7448#0" expanded="false" />
+                <element signature="e#7750#8055#0" expanded="false" />
+                <element signature="e#13044#13107#0" expanded="false" />
+                <element signature="e#13044#13512#0" expanded="false" />
+                <element signature="e#13516#14107#0" expanded="false" />
+                <element signature="e#13516#16731#0" expanded="false" />
+                <element signature="e#16755#20612#1" expanded="false" />
+                <element signature="e#16821#17363#0" expanded="false" />
+                <element signature="e#17710#18126#0" expanded="false" />
+                <element signature="e#20694#20967#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PCAExample.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RDD.scala" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/rdd/RDD.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="286" column="6" lean-forward="false" selection-start-line="286" selection-start-column="6" selection-end-line="286" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShuffleMapTask.scala" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/scheduler/ShuffleMapTask.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="95" column="6" lean-forward="false" selection-start-line="95" selection-start-column="6" selection-end-line="95" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Task.scala" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/scheduler/Task.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="107" column="6" lean-forward="false" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Executor.scala" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/executor/Executor.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="341" column="19" lean-forward="false" selection-start-line="341" selection-start-column="19" selection-end-line="341" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapPartitionsRDD.scala" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/rdd/MapPartitionsRDD.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="37" column="4" lean-forward="false" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PCAExample.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/PCAExample.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="25" column="50" lean-forward="true" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+            <state relative-caret-position="70">
+              <caret line="23" column="32" lean-forward="false" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MLUtils.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/MLUtils.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PairRDDFunctions.scala" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/rdd/PairRDDFunctions.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RDDOperationScope.scala" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/rdd/RDDOperationScope.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1975">
-              <caret line="103" column="7" lean-forward="false" selection-start-line="103" selection-start-column="7" selection-end-line="103" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Iterator.scala" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.11.11-sources.jar!/scala/collection/Iterator.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9975">
-              <caret line="409" column="17" lean-forward="false" selection-start-line="409" selection-start-column="17" selection-end-line="409" selection-end-column="17" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -138,11 +192,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>log1pExp</find>
-      <find>convertMatrixColumnsFromML</find>
-      <find>convertMatrixColumnsToML</find>
-      <find>convertVectorColumnsFromML</find>
-      <find>convertVectorColumnsToML</find>
       <find>appendBias</find>
       <find>a</find>
       <find>kFold</find>
@@ -167,7 +216,12 @@
       <find>LocalKMeans</find>
       <find>Tuple1</find>
       <find>pointCosts</find>
+      <find>km</find>
       <find>pointCost</find>
+      <find>clusterCentersWithNorm</find>
+      <find>ini in</find>
+      <find>jumlahElemenCluster</find>
+      <find>outputExt</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -189,11 +243,12 @@
         <option value="$PROJECT_DIR$/src/main/scala/BLAS.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/XORShiftRandom.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/kmeans.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/PCAExample.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/TestKMeans.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/CustomKMeans.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/CustomKMeansModel.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/SparkSession.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/PCAExample.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/org/apache/spark/mllib/clustering/KMeansModel.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/CustomKMeans.scala" />
       </list>
     </option>
   </component>
@@ -219,9 +274,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -274,7 +329,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.PCAExample">
+  <component name="RunManager" selected="Application.TestKMeans">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -405,8 +460,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.PCAExample" />
-        <item index="1" class="java.lang.String" itemvalue="Application.TestKMeans" />
+        <item index="0" class="java.lang.String" itemvalue="Application.TestKMeans" />
+        <item index="1" class="java.lang.String" itemvalue="Application.PCAExample" />
         <item index="2" class="java.lang.String" itemvalue="Application.PCAOnRowMatrixExample" />
       </list>
     </recent_temporary>
@@ -463,7 +518,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3276644" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32764506" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="sbt" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -481,7 +536,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37414965" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3731513" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -497,7 +552,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>file://$PROJECT_DIR$/src/main/scala/org/apache/spark/mllib/clustering/KMeansModel.scala</url>
+          <line>114</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="31" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -511,122 +574,42 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/scala/CustomKMeans.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4150">
-          <caret line="166" column="46" lean-forward="false" selection-start-line="166" selection-start-column="46" selection-end-line="166" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#10382#10445#0" expanded="false" />
-            <element signature="e#10382#10850#0" expanded="false" />
-            <element signature="e#10854#11445#0" expanded="false" />
-            <element signature="e#10854#14069#0" expanded="false" />
-            <element signature="e#14159#14701#0" expanded="false" />
-            <element signature="e#15048#15464#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.sbt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/TestKMeans.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/MLUtils.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1218">
-          <caret line="64" column="26" lean-forward="false" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/XORShiftRandom.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="903">
-          <caret line="43" column="2" lean-forward="false" selection-start-line="43" selection-start-column="2" selection-end-line="43" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/BLAS.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2835">
-          <caret line="269" column="6" lean-forward="false" selection-start-line="269" selection-start-column="6" selection-end-line="269" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-            <element signature="e#426#586#0" expanded="false" />
-            <element signature="e#2162#2825#0" expanded="false" />
-            <element signature="e#2829#2978#0" expanded="false" />
-            <element signature="e#2982#3309#0" expanded="false" />
-            <element signature="e#3313#3916#0" expanded="false" />
-            <element signature="e#3920#4899#0" expanded="false" />
-            <element signature="e#5286#5455#0" expanded="false" />
-            <element signature="e#5459#5741#0" expanded="false" />
-            <element signature="e#5745#6707#0" expanded="false" />
-            <element signature="e#6711#6935#0" expanded="false" />
-            <element signature="e#6936#6991#0" expanded="false" />
-            <element signature="e#8393#8805#0" expanded="false" />
-            <element signature="e#8393#9589#0" expanded="false" />
-            <element signature="e#9593#9666#0" expanded="false" />
-            <element signature="e#9593#10595#0" expanded="false" />
-            <element signature="e#10599#14597#0" expanded="false" />
-            <element signature="e#14601#14983#0" expanded="false" />
-            <element signature="e#14601#16167#0" expanded="false" />
-            <element signature="e#16171#16729#0" expanded="false" />
-            <element signature="e#16733#16827#0" expanded="false" />
-            <element signature="e#16733#17964#0" expanded="false" />
-            <element signature="e#17968#18063#0" expanded="false" />
-            <element signature="e#17968#19724#0" expanded="false" />
-            <element signature="e#19728#19822#0" expanded="false" />
-            <element signature="e#19728#21268#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/LocalKMeans.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Instrumentation.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/CustomKMeans.scala">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3486">
           <caret line="166" column="46" lean-forward="false" selection-start-line="166" selection-start-column="46" selection-end-line="166" selection-end-column="46" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#10382#10445#0" expanded="false" />
-            <element signature="e#10382#10850#0" expanded="false" />
-            <element signature="e#10854#11445#0" expanded="false" />
-            <element signature="e#10854#14069#0" expanded="false" />
-            <element signature="e#14159#14701#0" expanded="false" />
-            <element signature="e#15048#15464#0" expanded="false" />
+            <element signature="e#2766#2964#0" expanded="false" />
+            <element signature="e#2988#3206#0" expanded="false" />
+            <element signature="e#2988#3346#0" expanded="false" />
+            <element signature="e#3350#3404#0" expanded="false" />
+            <element signature="e#3452#3523#0" expanded="false" />
+            <element signature="e#3452#3742#0" expanded="false" />
+            <element signature="e#3746#3836#0" expanded="false" />
+            <element signature="e#3897#4162#0" expanded="false" />
+            <element signature="e#3897#4349#0" expanded="false" />
+            <element signature="e#4354#4424#0" expanded="false" />
+            <element signature="e#4485#4655#0" expanded="false" />
+            <element signature="e#4485#4916#0" expanded="false" />
+            <element signature="e#5053#5239#0" expanded="false" />
+            <element signature="e#5053#5422#0" expanded="false" />
+            <element signature="e#5426#5486#0" expanded="false" />
+            <element signature="e#5517#5581#0" expanded="false" />
+            <element signature="e#5517#5656#0" expanded="false" />
+            <element signature="e#5851#6053#0" expanded="false" />
+            <element signature="e#5851#6208#0" expanded="false" />
+            <element signature="e#6212#6370#0" expanded="false" />
+            <element signature="e#6212#6440#0" expanded="false" />
+            <element signature="e#6444#7391#0" expanded="false" />
+            <element signature="e#7395#7448#0" expanded="false" />
+            <element signature="e#7750#8055#0" expanded="false" />
+            <element signature="e#13044#13107#0" expanded="false" />
+            <element signature="e#13044#13512#0" expanded="false" />
+            <element signature="e#13516#14107#0" expanded="false" />
+            <element signature="e#13516#16731#0" expanded="false" />
+            <element signature="e#16755#20612#1" expanded="false" />
+            <element signature="e#16821#17363#0" expanded="false" />
+            <element signature="e#17710#18126#0" expanded="false" />
+            <element signature="e#20694#20967#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -635,6 +618,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -652,9 +636,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1344">
           <caret line="64" column="26" lean-forward="true" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -727,12 +709,38 @@
           <caret line="157" column="0" lean-forward="false" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#10382#10445#0" expanded="false" />
-            <element signature="e#10382#10850#0" expanded="false" />
-            <element signature="e#10854#11445#0" expanded="false" />
-            <element signature="e#10854#14069#0" expanded="false" />
-            <element signature="e#14159#14701#0" expanded="false" />
-            <element signature="e#15048#15464#0" expanded="false" />
+            <element signature="e#2766#2964#0" expanded="false" />
+            <element signature="e#2988#3206#0" expanded="false" />
+            <element signature="e#2988#3346#0" expanded="false" />
+            <element signature="e#3350#3404#0" expanded="false" />
+            <element signature="e#3452#3523#0" expanded="false" />
+            <element signature="e#3452#3742#0" expanded="false" />
+            <element signature="e#3746#3836#0" expanded="false" />
+            <element signature="e#3897#4162#0" expanded="false" />
+            <element signature="e#3897#4349#0" expanded="false" />
+            <element signature="e#4354#4424#0" expanded="false" />
+            <element signature="e#4485#4655#0" expanded="false" />
+            <element signature="e#4485#4916#0" expanded="false" />
+            <element signature="e#5053#5239#0" expanded="false" />
+            <element signature="e#5053#5422#0" expanded="false" />
+            <element signature="e#5426#5486#0" expanded="false" />
+            <element signature="e#5517#5581#0" expanded="false" />
+            <element signature="e#5517#5656#0" expanded="false" />
+            <element signature="e#5851#6053#0" expanded="false" />
+            <element signature="e#5851#6208#0" expanded="false" />
+            <element signature="e#6212#6370#0" expanded="false" />
+            <element signature="e#6212#6440#0" expanded="false" />
+            <element signature="e#6444#7391#0" expanded="false" />
+            <element signature="e#7395#7448#0" expanded="false" />
+            <element signature="e#7750#8055#0" expanded="false" />
+            <element signature="e#13044#13107#0" expanded="false" />
+            <element signature="e#13044#13512#0" expanded="false" />
+            <element signature="e#13516#14107#0" expanded="false" />
+            <element signature="e#13516#16731#0" expanded="false" />
+            <element signature="e#16755#20612#1" expanded="false" />
+            <element signature="e#16821#17363#0" expanded="false" />
+            <element signature="e#17710#18126#0" expanded="false" />
+            <element signature="e#20694#20967#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -751,6 +759,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -758,6 +767,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -777,12 +787,38 @@
           <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#10382#10445#0" expanded="false" />
-            <element signature="e#10382#10850#0" expanded="false" />
-            <element signature="e#10854#11445#0" expanded="false" />
-            <element signature="e#10854#14069#0" expanded="false" />
-            <element signature="e#14159#14701#0" expanded="false" />
-            <element signature="e#15048#15464#0" expanded="false" />
+            <element signature="e#2766#2964#0" expanded="false" />
+            <element signature="e#2988#3206#0" expanded="false" />
+            <element signature="e#2988#3346#0" expanded="false" />
+            <element signature="e#3350#3404#0" expanded="false" />
+            <element signature="e#3452#3523#0" expanded="false" />
+            <element signature="e#3452#3742#0" expanded="false" />
+            <element signature="e#3746#3836#0" expanded="false" />
+            <element signature="e#3897#4162#0" expanded="false" />
+            <element signature="e#3897#4349#0" expanded="false" />
+            <element signature="e#4354#4424#0" expanded="false" />
+            <element signature="e#4485#4655#0" expanded="false" />
+            <element signature="e#4485#4916#0" expanded="false" />
+            <element signature="e#5053#5239#0" expanded="false" />
+            <element signature="e#5053#5422#0" expanded="false" />
+            <element signature="e#5426#5486#0" expanded="false" />
+            <element signature="e#5517#5581#0" expanded="false" />
+            <element signature="e#5517#5656#0" expanded="false" />
+            <element signature="e#5851#6053#0" expanded="false" />
+            <element signature="e#5851#6208#0" expanded="false" />
+            <element signature="e#6212#6370#0" expanded="false" />
+            <element signature="e#6212#6440#0" expanded="false" />
+            <element signature="e#6444#7391#0" expanded="false" />
+            <element signature="e#7395#7448#0" expanded="false" />
+            <element signature="e#7750#8055#0" expanded="false" />
+            <element signature="e#13044#13107#0" expanded="false" />
+            <element signature="e#13044#13512#0" expanded="false" />
+            <element signature="e#13516#14107#0" expanded="false" />
+            <element signature="e#13516#16731#0" expanded="false" />
+            <element signature="e#16755#20612#1" expanded="false" />
+            <element signature="e#16821#17363#0" expanded="false" />
+            <element signature="e#17710#18126#0" expanded="false" />
+            <element signature="e#20694#20967#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -791,6 +827,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -810,12 +847,38 @@
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#10382#10445#0" expanded="false" />
-            <element signature="e#10382#10850#0" expanded="false" />
-            <element signature="e#10854#11445#0" expanded="false" />
-            <element signature="e#10854#14069#0" expanded="false" />
-            <element signature="e#14159#14701#0" expanded="false" />
-            <element signature="e#15048#15464#0" expanded="false" />
+            <element signature="e#2766#2964#0" expanded="false" />
+            <element signature="e#2988#3206#0" expanded="false" />
+            <element signature="e#2988#3346#0" expanded="false" />
+            <element signature="e#3350#3404#0" expanded="false" />
+            <element signature="e#3452#3523#0" expanded="false" />
+            <element signature="e#3452#3742#0" expanded="false" />
+            <element signature="e#3746#3836#0" expanded="false" />
+            <element signature="e#3897#4162#0" expanded="false" />
+            <element signature="e#3897#4349#0" expanded="false" />
+            <element signature="e#4354#4424#0" expanded="false" />
+            <element signature="e#4485#4655#0" expanded="false" />
+            <element signature="e#4485#4916#0" expanded="false" />
+            <element signature="e#5053#5239#0" expanded="false" />
+            <element signature="e#5053#5422#0" expanded="false" />
+            <element signature="e#5426#5486#0" expanded="false" />
+            <element signature="e#5517#5581#0" expanded="false" />
+            <element signature="e#5517#5656#0" expanded="false" />
+            <element signature="e#5851#6053#0" expanded="false" />
+            <element signature="e#5851#6208#0" expanded="false" />
+            <element signature="e#6212#6370#0" expanded="false" />
+            <element signature="e#6212#6440#0" expanded="false" />
+            <element signature="e#6444#7391#0" expanded="false" />
+            <element signature="e#7395#7448#0" expanded="false" />
+            <element signature="e#7750#8055#0" expanded="false" />
+            <element signature="e#13044#13107#0" expanded="false" />
+            <element signature="e#13044#13512#0" expanded="false" />
+            <element signature="e#13516#14107#0" expanded="false" />
+            <element signature="e#13516#16731#0" expanded="false" />
+            <element signature="e#16755#20612#1" expanded="false" />
+            <element signature="e#16821#17363#0" expanded="false" />
+            <element signature="e#17710#18126#0" expanded="false" />
+            <element signature="e#20694#20967#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -824,6 +887,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -833,12 +897,38 @@
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#10382#10445#0" expanded="false" />
-            <element signature="e#10382#10850#0" expanded="false" />
-            <element signature="e#10854#11445#0" expanded="false" />
-            <element signature="e#10854#14069#0" expanded="false" />
-            <element signature="e#14159#14701#0" expanded="false" />
-            <element signature="e#15048#15464#0" expanded="false" />
+            <element signature="e#2766#2964#0" expanded="false" />
+            <element signature="e#2988#3206#0" expanded="false" />
+            <element signature="e#2988#3346#0" expanded="false" />
+            <element signature="e#3350#3404#0" expanded="false" />
+            <element signature="e#3452#3523#0" expanded="false" />
+            <element signature="e#3452#3742#0" expanded="false" />
+            <element signature="e#3746#3836#0" expanded="false" />
+            <element signature="e#3897#4162#0" expanded="false" />
+            <element signature="e#3897#4349#0" expanded="false" />
+            <element signature="e#4354#4424#0" expanded="false" />
+            <element signature="e#4485#4655#0" expanded="false" />
+            <element signature="e#4485#4916#0" expanded="false" />
+            <element signature="e#5053#5239#0" expanded="false" />
+            <element signature="e#5053#5422#0" expanded="false" />
+            <element signature="e#5426#5486#0" expanded="false" />
+            <element signature="e#5517#5581#0" expanded="false" />
+            <element signature="e#5517#5656#0" expanded="false" />
+            <element signature="e#5851#6053#0" expanded="false" />
+            <element signature="e#5851#6208#0" expanded="false" />
+            <element signature="e#6212#6370#0" expanded="false" />
+            <element signature="e#6212#6440#0" expanded="false" />
+            <element signature="e#6444#7391#0" expanded="false" />
+            <element signature="e#7395#7448#0" expanded="false" />
+            <element signature="e#7750#8055#0" expanded="false" />
+            <element signature="e#13044#13107#0" expanded="false" />
+            <element signature="e#13044#13512#0" expanded="false" />
+            <element signature="e#13516#14107#0" expanded="false" />
+            <element signature="e#13516#16731#0" expanded="false" />
+            <element signature="e#16755#20612#1" expanded="false" />
+            <element signature="e#16821#17363#0" expanded="false" />
+            <element signature="e#17710#18126#0" expanded="false" />
+            <element signature="e#20694#20967#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -857,6 +947,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -874,6 +965,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -893,12 +985,38 @@
           <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#10382#10445#0" expanded="false" />
-            <element signature="e#10382#10850#0" expanded="false" />
-            <element signature="e#10854#11445#0" expanded="false" />
-            <element signature="e#10854#14069#0" expanded="false" />
-            <element signature="e#14159#14701#0" expanded="false" />
-            <element signature="e#15048#15464#0" expanded="false" />
+            <element signature="e#2766#2964#0" expanded="false" />
+            <element signature="e#2988#3206#0" expanded="false" />
+            <element signature="e#2988#3346#0" expanded="false" />
+            <element signature="e#3350#3404#0" expanded="false" />
+            <element signature="e#3452#3523#0" expanded="false" />
+            <element signature="e#3452#3742#0" expanded="false" />
+            <element signature="e#3746#3836#0" expanded="false" />
+            <element signature="e#3897#4162#0" expanded="false" />
+            <element signature="e#3897#4349#0" expanded="false" />
+            <element signature="e#4354#4424#0" expanded="false" />
+            <element signature="e#4485#4655#0" expanded="false" />
+            <element signature="e#4485#4916#0" expanded="false" />
+            <element signature="e#5053#5239#0" expanded="false" />
+            <element signature="e#5053#5422#0" expanded="false" />
+            <element signature="e#5426#5486#0" expanded="false" />
+            <element signature="e#5517#5581#0" expanded="false" />
+            <element signature="e#5517#5656#0" expanded="false" />
+            <element signature="e#5851#6053#0" expanded="false" />
+            <element signature="e#5851#6208#0" expanded="false" />
+            <element signature="e#6212#6370#0" expanded="false" />
+            <element signature="e#6212#6440#0" expanded="false" />
+            <element signature="e#6444#7391#0" expanded="false" />
+            <element signature="e#7395#7448#0" expanded="false" />
+            <element signature="e#7750#8055#0" expanded="false" />
+            <element signature="e#13044#13107#0" expanded="false" />
+            <element signature="e#13044#13512#0" expanded="false" />
+            <element signature="e#13516#14107#0" expanded="false" />
+            <element signature="e#13516#16731#0" expanded="false" />
+            <element signature="e#16755#20612#1" expanded="false" />
+            <element signature="e#16821#17363#0" expanded="false" />
+            <element signature="e#17710#18126#0" expanded="false" />
+            <element signature="e#20694#20967#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -907,6 +1025,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -970,7 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24875">
           <caret line="1037" column="10" lean-forward="false" selection-start-line="1037" selection-start-column="10" selection-end-line="1037" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -978,7 +1096,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4550">
           <caret line="215" column="6" lean-forward="false" selection-start-line="215" selection-start-column="6" selection-end-line="215" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1008,76 +1125,144 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/LocalKMeans.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="33" column="28" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/rdd/RDD.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45400">
-          <caret line="1872" column="62" lean-forward="true" selection-start-line="1872" selection-start-column="62" selection-end-line="1872" selection-end-column="62" />
+        <state relative-caret-position="750">
+          <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/MLUtils.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
+        <state relative-caret-position="1375">
+          <caret line="56" column="7" lean-forward="false" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/SparkSession.scala" />
+    <entry file="file://$PROJECT_DIR$/src/main/scala/CustomKMeansModel.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-mllib_2.11/srcs/spark-mllib_2.11-2.2.0-sources.jar!/org/apache/spark/mllib/clustering/KMeansModel.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2150">
+          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/org/apache/spark/mllib/clustering/KMeansModel.scala" />
     <entry file="file://$PROJECT_DIR$/src/main/scala/TestKMeans.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+        <state relative-caret-position="0">
+          <caret line="15" column="32" lean-forward="false" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/PCAExample.scala">
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/TaskContextImpl.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="25" column="50" lean-forward="true" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/SparkSession.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24934">
-          <caret line="1061" column="1" lean-forward="false" selection-start-line="1061" selection-start-column="1" selection-end-line="1061" selection-end-column="1" />
+        <state relative-caret-position="171">
+          <caret line="147" column="8" lean-forward="false" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/CustomKMeansModel.scala">
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/InterruptibleIterator.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
-          <caret line="110" column="15" lean-forward="false" selection-start-line="110" selection-start-column="10" selection-end-line="110" selection-end-column="15" />
+        <state relative-caret-position="239">
+          <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/rdd/MapPartitionsRDD.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="37" column="4" lean-forward="false" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/rdd/RDD.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="286" column="6" lean-forward="false" selection-start-line="286" selection-start-column="6" selection-end-line="286" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/scheduler/ShuffleMapTask.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="95" column="6" lean-forward="false" selection-start-line="95" selection-start-column="6" selection-end-line="95" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/scheduler/Task.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="107" column="6" lean-forward="false" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-core_2.11/srcs/spark-core_2.11-2.2.0-sources.jar!/org/apache/spark/executor/Executor.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="341" column="19" lean-forward="false" selection-start-line="341" selection-start-column="19" selection-end-line="341" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/CustomKMeans.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3008">
-          <caret line="465" column="2" lean-forward="false" selection-start-line="465" selection-start-column="2" selection-end-line="465" selection-end-column="2" />
+        <state relative-caret-position="399">
+          <caret line="335" column="5" lean-forward="true" selection-start-line="335" selection-start-column="5" selection-end-line="335" selection-end-column="5" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#10382#10445#0" expanded="false" />
-            <element signature="e#10382#10850#0" expanded="false" />
-            <element signature="e#10854#11445#0" expanded="false" />
-            <element signature="e#10854#14069#0" expanded="false" />
-            <element signature="e#14159#14701#0" expanded="false" />
-            <element signature="e#15048#15464#0" expanded="false" />
+            <element signature="e#2766#2964#0" expanded="false" />
+            <element signature="e#2988#3206#0" expanded="false" />
+            <element signature="e#2988#3346#0" expanded="false" />
+            <element signature="e#3350#3404#0" expanded="false" />
+            <element signature="e#3452#3523#0" expanded="false" />
+            <element signature="e#3452#3742#0" expanded="false" />
+            <element signature="e#3746#3836#0" expanded="false" />
+            <element signature="e#3897#4162#0" expanded="false" />
+            <element signature="e#3897#4349#0" expanded="false" />
+            <element signature="e#4354#4424#0" expanded="false" />
+            <element signature="e#4485#4655#0" expanded="false" />
+            <element signature="e#4485#4916#0" expanded="false" />
+            <element signature="e#5053#5239#0" expanded="false" />
+            <element signature="e#5053#5422#0" expanded="false" />
+            <element signature="e#5426#5486#0" expanded="false" />
+            <element signature="e#5517#5581#0" expanded="false" />
+            <element signature="e#5517#5656#0" expanded="false" />
+            <element signature="e#5851#6053#0" expanded="false" />
+            <element signature="e#5851#6208#0" expanded="false" />
+            <element signature="e#6212#6370#0" expanded="false" />
+            <element signature="e#6212#6440#0" expanded="false" />
+            <element signature="e#6444#7391#0" expanded="false" />
+            <element signature="e#7395#7448#0" expanded="false" />
+            <element signature="e#7750#8055#0" expanded="false" />
+            <element signature="e#13044#13107#0" expanded="false" />
+            <element signature="e#13044#13512#0" expanded="false" />
+            <element signature="e#13516#14107#0" expanded="false" />
+            <element signature="e#13516#16731#0" expanded="false" />
+            <element signature="e#16755#20612#1" expanded="false" />
+            <element signature="e#16821#17363#0" expanded="false" />
+            <element signature="e#17710#18126#0" expanded="false" />
+            <element signature="e#20694#20967#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/PCAExample.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="23" column="32" lean-forward="false" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1139,6 +1324,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
