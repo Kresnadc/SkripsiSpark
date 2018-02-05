@@ -253,7 +253,7 @@ class CustomKMeans (
       this.outputText += "Iterasi K-Means ke- :"+iteration+"\n"
       // Find the new centers
       // Center baru setiap iterasi
-      val newCenters = data.mapPartitions { points =>
+      val newCenters1 = data.mapPartitions { points =>
         val thisCenters = bcCenters.value
         val dims = thisCenters.head.vector.size
 
@@ -309,14 +309,23 @@ class CustomKMeans (
         // iterator: Iterator[A] : Creates a new iterator over all elements contained in this iterable object.
         counts.indices.filter(counts(_) > 0).map(j => (j, (sums(j), counts(j)))).iterator
 
-      }.reduceByKey { case ((sum1, count1), (sum2, count2)) =>
+      }
+      println("-newCenters1-")
+      newCenters1.collect().foreach(println)
+      val newCenters2 = newCenters1.reduceByKey { case ((sum1, count1), (sum2, count2)) =>
         BLAS.axpy(1.0, sum2, sum1)
         (sum1, count1 + count2)
-      }.mapValues { case (sum, count) =>
+      }
+      println("-newCenters2-")
+      newCenters2.collect().foreach(println)
+      val newCenters3 = newCenters2.mapValues { case (sum, count) =>
         BLAS.scal(1.0 / count, sum)
         new VectorWithNorm(sum)
-      }.collectAsMap()
+      }
 
+      val newCenters4 = newCenters3.collectAsMap()
+
+      val newCenters = newCenters4
       //bcCenters.destroy(blocking = false)
 
       MinMaxBoolean = true
@@ -330,7 +339,6 @@ class CustomKMeans (
         centers(j) = newCenter
         println("indexCentroid = "+j+", newCentroid = "+newCenter.vector)
       }
-
       cost = costAccum.value
       iteration += 1
     }
@@ -352,7 +360,7 @@ class CustomKMeans (
 
     this.outputText += "KMeans converged in " + iteration + " iterations"
     this.outputText += "Cost : " + cost + "\n"
-    println(outputText)
+    //println(outputText)
 
     new KMeansModel(centers.map(_.vector))
   }
