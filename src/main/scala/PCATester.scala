@@ -6,7 +6,7 @@ import org.apache.spark.mllib.regression.LabeledPoint
 import org.apache.spark.rdd.RDD
 
 //PCAOnSourceVectorExample
-object PCAExample {
+object PCATester {
 
   def main(args: Array[String]): Unit = {
 

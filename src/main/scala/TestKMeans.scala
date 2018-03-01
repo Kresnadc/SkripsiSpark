@@ -12,7 +12,7 @@ object TestKMeans {
 
     // Load and parse the data
     // val data = sc.textFile("hdfs://localhost:9001/user/hadoop/iris-dataset")
-    val data = sc.textFile("E:/sample_mllib_kmeans_data.txt")
+    val data = sc.textFile("E:/InputTest/sample_mllib_kmeans_data.txt")
     //println("Element of RDD: "+ data.count())
     val parsedData = data.map(s => Vectors.dense(s.split(' ').map(_.toDouble))).cache()
     //println("Parsed Data :")
