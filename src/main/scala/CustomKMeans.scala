@@ -54,7 +54,6 @@ class CustomKMeans (
     // Varian / Simpangan baku / Standar Deviasi
     var standarDeviasi = scala.math.sqrt(((dataCount * variasi2) - (variasi1*variasi1)) / (dataCount * (dataCount-1)))
     outputString += "Nilai Standar Deviasi :"+standarDeviasi+"\n"
-    println("standarDeviasi = "+ standarDeviasi)
 
     // Menggunakan Java io
     val pw = new PrintWriter(new File("OutputTextKMEANS.txt" ))
@@ -253,8 +252,7 @@ class CustomKMeans (
       val bcCenters = sc.broadcast(centers) //broadcast agar bisa dibaca secara distributed
       val bcFlag = sc.broadcast(customFlag)
       // Print iteration
-      println("Iterasi K-Means ke- :"+iteration)
-      this.outputText += "Iterasi K-Means ke- :"+iteration+"\n"
+      this.outputText += "Iterasi K-Means ke- :" + iteration + "\n"
 
       // Find the new centers
       val newCenters1 = data.mapPartitions { points =>
@@ -268,8 +266,8 @@ class CustomKMeans (
         var indexElement = 0
         //Jumlah element per cluster
         var jumlahElemenCluster: Array[Double] = new Array[Double](k)
-        var minValue:Double = Double.PositiveInfinity
-        var maxValue:Double = Double.NegativeInfinity
+        var minValue: Double = Double.PositiveInfinity
+        var maxValue: Double = Double.NegativeInfinity
         var variasi1: Double = 0.0
         var variasi2: Double = 0.0
         // Jumlah angka (element x length)
@@ -283,26 +281,27 @@ class CustomKMeans (
           counts(bestCenter) += 1
 
           //Output Iterasi, Minimum Maximum, Standar Deviasi
-          if(!bcFlag.value){
-            this.outputText += "Elemen ke - "+indexElement+"\n"
-            this.outputText += "Best Cluster : "+ bestCenter+"\n"
-            this.outputText += "Best Distance : "+ cost+"\n"
+          this.outputText += "Elemen ke - " + indexElement + "\n"
+          this.outputText += "Best Cluster : " + bestCenter + "\n"
+          this.outputText += "Best Distance : " + cost + "\n"
+          indexElement += 1
+
+          if (!bcFlag.value) {
             jumlahElemenCluster(bestCenter) += 1
-            indexElement += 1
 
             var pointArr: Array[Double] = point.vector.toArray
             var pointLength: Int = pointArr.length;
             dataCount += pointLength
-            for ( i <- 0 to (pointLength - 1)) {
+            for (i <- 0 to (pointLength - 1)) {
               var currentValue = pointArr(i)
-              if(currentValue < minValue){
+              if (currentValue < minValue) {
                 minValue = currentValue
               }
-              if(currentValue > maxValue) {
+              if (currentValue > maxValue) {
                 maxValue = currentValue
               }
               variasi1 += currentValue
-              variasi2 += (currentValue*currentValue)
+              variasi2 += (currentValue * currentValue)
             }
           }
         }
@@ -318,14 +317,14 @@ class CustomKMeans (
         //(dataCount, jumlahElemenCluster, minValue, maxValue, variasi1, variasi2)
         counts.indices.filter(counts(_) > 0).map(j => (j, (sums(j), counts(j), varOut, countOut))).iterator
       }
-      println("-newCenters1-")
+
       newCenters1.collect().foreach(println)
       val newCenters2 = newCenters1.reduceByKey { case ((sum1, count1, varOut1, countOut1), (sum2, count2, varOut2, countOut2)) =>
         BLAS.axpy(1.0, sum2, sum1)
-        // Debug saat distributed
+        // todo Debug saat distributed
         (sum1, count1 + count2, varOut1, countOut2)
       }
-      println("-newCenters2-")
+
       //val outputVariable = newCenters2.take(1)
       newCenters2.collect().foreach(println)
       val newCenters3 = newCenters2.mapValues { case (sum, count, varOut, countOut) =>
@@ -333,32 +332,36 @@ class CustomKMeans (
         new VectorWithNorm(sum)
       }
 
+      //Customize Print output
       val newVarOut = newCenters2.mapValues { case (sum, count, varOut, countOut) =>
         (varOut)
+        //Todo buat lebih efisien
       }
       val newCountOut = newCenters2.mapValues { case (sum, count, varOut, countOut) =>
         (countOut)
       }
+      if (!customFlag) {
+        var test = newVarOut.collectAsMap().apply(0).toArray
+        var endDataCount = newVarOut.collect().apply(0)._2
+        var endCountOut = newCountOut.collect().apply(0)._2
+
+        var indexElement = endDataCount.apply(0)
+        var dataCount: Double = endDataCount.apply(1)
+        var minValue: Double = endDataCount.apply(2)
+        var maxValue: Double = endDataCount.apply(3)
+        var variasi1: Double = endDataCount.apply(4)
+        var variasi2: Double = endDataCount.apply(5)
+        var jumlahElemenCluster: Array[Double] = endCountOut.toArray
+        printAllOutput(dataCount.toInt, minValue, maxValue, variasi1, variasi2, jumlahElemenCluster)
+        customFlag = true
+      }
+      //end of customize
 
       val newCenters = newCenters3.collectAsMap()
 
-      //Customize Print output
-      var test = newVarOut.collectAsMap().apply(0).toArray
-      var endDataCount = newVarOut.collect().apply(0)._2
-      var endCountOut = newCountOut.collect().apply(0)._2
-
-      var indexElement = endDataCount.apply(0)
-      var dataCount: Double = endDataCount.apply(1)
-      var minValue:Double = endDataCount.apply(2)
-      var maxValue:Double = endDataCount.apply(3)
-      var variasi1: Double = endDataCount.apply(4)
-      var variasi2: Double = endDataCount.apply(5)
-      var jumlahElemenCluster: Array[Double] = endCountOut.toArray
-      printAllOutput(dataCount.toInt, minValue, maxValue, variasi1, variasi2, jumlahElemenCluster)
-      customFlag = true
-      //end of customize
-
       //bcCenters.destroy(blocking = false)
+      bcCenters.destroy()
+      bcFlag.destroy()
 
       //Update the cluster centers and costs
       converged = true

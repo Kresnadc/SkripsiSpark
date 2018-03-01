@@ -1,0 +1,8 @@
+Jumlah Elemen Cluster 1 :22
+Jumlah Elemen Cluster 2 :50
+Jumlah Elemen Cluster 3 :30
+Jumlah Elemen Cluster 4 :37
+Jumlah Elemen Cluster 5 :11
+Nilai Maximum Element :7.9
+Nilai Minimum Element :0.1
+Nilai Standar Deviasi :1.975648044959299
