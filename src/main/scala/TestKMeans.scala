@@ -28,8 +28,8 @@ object TestKMeans {
     println("Within Set Sum of Squared Errors (COST) = " + WSSSE)
 
     // Save and load model
-    clusters.save(sc, "E:/TestKmeans")
-    val sameModel = KMeansModel.load(sc, "E:/TestKmeans")
+    clusters.save(sc, "E:/Output/ModelKmeans")
+    val sameModel = KMeansModel.load(sc, "E:/Output/ModelKmeans")
 
     // New Cluster Center
     println("Cluster Centers: ")

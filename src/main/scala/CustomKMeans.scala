@@ -20,13 +20,13 @@ import org.apache.spark.mllib.clustering.KMeansModel
 import java.io._
 
 class CustomKMeans (
-                             private var k: Int,
-                             private var maxIterations: Int,
-                             private var initializationMode: String,
-                             private var initializationSteps: Int,
-                             private var epsilon: Double,
-                             private var seed: Long,
-                             private var outputText: String) extends Serializable with Logging {
+                     private var k: Int,
+                     private var maxIterations: Int,
+                     private var initializationMode: String,
+                     private var initializationSteps: Int,
+                     private var epsilon: Double,
+                     private var seed: Long,
+                     private var outputText: String) extends Serializable with Logging {
 
   /**
     * Constructs a KMeans instance with default parameters: {k: 2, maxIterations: 20,
@@ -36,30 +36,15 @@ class CustomKMeans (
 
   /**
     * Method untuk print out ke File
-    * @param dataCount
-    * @return
+    * @param inputText text that will printed out to file
+    * @return param
     */
-  def printAllOutput(dataCount: Int, minValue: Double, maxValue:Double, variasi1:Double, variasi2:Double
-                     , jumlahElemenCluster: Array[Double]): String ={
-
-    var outputString: String = ""
-
-    for ( i <- 0 to (jumlahElemenCluster.length - 1)) {
-      outputString += "Jumlah Elemen Cluster "+(i+1)+" :"+jumlahElemenCluster(i).toInt+"\n"
-    }
-
-    outputString += "Nilai Maximum Element :"+maxValue+"\n"
-    outputString += "Nilai Minimum Element :"+minValue+"\n"
-
-    // Varian / Simpangan baku / Standar Deviasi
-    var standarDeviasi = scala.math.sqrt(((dataCount * variasi2) - (variasi1*variasi1)) / (dataCount * (dataCount-1)))
-    outputString += "Nilai Standar Deviasi :"+standarDeviasi+"\n"
-
+  def printToFileTxt(inputText: String)={
     // Menggunakan Java io
     val pw = new PrintWriter(new File("OutputTextKMEANS.txt" ))
-    pw.write(outputString)
+    pw.write(inputText)
     pw.close
-    (outputString)
+    (inputText)
   }
 
   /**
@@ -252,7 +237,7 @@ class CustomKMeans (
       val bcCenters = sc.broadcast(centers) //broadcast agar bisa dibaca secara distributed
       val bcFlag = sc.broadcast(customFlag)
       // Print iteration
-      this.outputText += "Iterasi K-Means ke- :" + iteration + "\n"
+      this.outputText += "Iterasi K-Means ke- :" + (iteration+1) + "\n"
 
       // Find the new centers
       val newCenters1 = data.mapPartitions { points =>
@@ -261,17 +246,9 @@ class CustomKMeans (
 
         val sums = Array.fill(thisCenters.length)(Vectors.zeros(dims))
         val counts = Array.fill(thisCenters.length)(0L)
-
-        //Counter Index Element (row)
-        var indexElement = 0
-        //Jumlah element per cluster
-        var jumlahElemenCluster: Array[Double] = new Array[Double](k)
-        var minValue: Double = Double.PositiveInfinity
-        var maxValue: Double = Double.NegativeInfinity
-        var variasi1: Double = 0.0
-        var variasi2: Double = 0.0
-        // Jumlah angka (element x length)
-        var dataCount: Double = 0.0
+        val mins = Array.fill(thisCenters.length)(Vectors.dense(Array.fill(dims)(Double.PositiveInfinity)))
+        val maxs = Array.fill(thisCenters.length)(Vectors.zeros(dims))
+        val devs = Array.fill(thisCenters.length)(Vectors.zeros(dims)) // Jumlah dari sum kuadrat
 
         points.foreach { point =>
           val (bestCenter, cost) = CustomKMeans.findClosest(thisCenters, point)
@@ -280,82 +257,96 @@ class CustomKMeans (
           BLAS.axpy(1.0, point.vector, sum) // alpha x plus y (y = ax+y) this will update sum(y+= a*x) which is sums(bestcenter)
           counts(bestCenter) += 1
 
-          //Output Iterasi, Minimum Maximum, Standar Deviasi
-          this.outputText += "Elemen ke - " + indexElement + "\n"
-          this.outputText += "Best Cluster : " + bestCenter + "\n"
-          this.outputText += "Best Distance : " + cost + "\n"
-          indexElement += 1
-
-          if (!bcFlag.value) {
-            jumlahElemenCluster(bestCenter) += 1
-
-            var pointArr: Array[Double] = point.vector.toArray
-            var pointLength: Int = pointArr.length;
-            dataCount += pointLength
-            for (i <- 0 to (pointLength - 1)) {
-              var currentValue = pointArr(i)
-              if (currentValue < minValue) {
-                minValue = currentValue
-              }
-              if (currentValue > maxValue) {
-                maxValue = currentValue
-              }
-              variasi1 += currentValue
-              variasi2 += (currentValue * currentValue)
-            }
+          // Minimum
+          var arrMin = new Array[Double](dims)
+          for( i <- 0 to dims-1){
+            arrMin(i) = math.min(point.vector.apply(i), mins(bestCenter).apply(i))
           }
+          mins(bestCenter) = Vectors.dense(arrMin)
+
+          // Maximum
+          var arrMax = new Array[Double](dims)
+          for( i <- 0 to dims-1){
+            arrMax(i) = math.max(point.vector.apply(i), maxs(bestCenter).apply(i))
+          }
+          maxs(bestCenter) = Vectors.dense(arrMax)
+
+          // Deviasi
+          val dev = devs(bestCenter)
+          var arrDev = new Array[Double](dims)
+          for( i <- 0 to dims-1){
+            arrDev(i) = point.vector.apply(i) * point.vector.apply(i)
+          }
+          BLAS.axpy(1.0, Vectors.dense(arrDev), dev)
         }
-        println(outputText)
-        // Data output
-        var varOut: Vector = Vectors.dense(indexElement, dataCount, minValue, maxValue, variasi1, variasi2)
-        var countOut: Vector = Vectors.dense(jumlahElemenCluster)
 
         // indices indices: collection.immutable.Range adalah: returns a Range value from 0 to one less than the length of this mutable indexed sequence.
         // filter filter(p: (Int) ⇒ Boolean): IndexedSeq[Int] adalah: Selects all elements of this range which satisfy a predicate.
         // map map[B](f: (A) ⇒ B): IndexedSeq[B] adalah: [use case] Builds a new collection by applying a function to all elements of this immutable sequence.
         // iterator: Iterator[A] : Creates a new iterator over all elements contained in this iterable object.
-        //(dataCount, jumlahElemenCluster, minValue, maxValue, variasi1, variasi2)
-        counts.indices.filter(counts(_) > 0).map(j => (j, (sums(j), counts(j), varOut, countOut))).iterator
+        counts.indices.filter(counts(_) > 0).map(j => (j, (sums(j), counts(j), mins(j), maxs(j), devs(j)))).iterator
       }
 
-      newCenters1.collect().foreach(println)
-      val newCenters2 = newCenters1.reduceByKey { case ((sum1, count1, varOut1, countOut1), (sum2, count2, varOut2, countOut2)) =>
+      //newCenters1.collect().foreach(println)
+      val newCenters2 = newCenters1.reduceByKey { case ((sum1, count1, min1, max1, dev1), (sum2, count2, min2, max2, dev2)) =>
         BLAS.axpy(1.0, sum2, sum1)
-        // todo Debug saat distributed
-        (sum1, count1 + count2, varOut1, countOut2)
+        // Minimum dan Maximum atribut
+        var arrMin = new Array[Double](sum1.size)
+        var arrMax = new Array[Double](sum1.size)
+        for( i <- 0 to sum1.size-1){
+          arrMin(i) = math.min(min1.apply(i), min2.apply(i))
+          arrMax(i) = math.max(max1.apply(i), max2.apply(i))
+        }
+        var minRes: Vector = Vectors.dense(arrMin)
+        var maxRes: Vector = Vectors.dense(arrMax)
+        // Deviasi atribut
+        BLAS.axpy(1.0, dev2, dev1)
+        //res
+        (sum1, count1 + count2, minRes, maxRes, dev1)
       }
 
-      //val outputVariable = newCenters2.take(1)
-      newCenters2.collect().foreach(println)
-      val newCenters3 = newCenters2.mapValues { case (sum, count, varOut, countOut) =>
+      var X = newCenters2.collect()
+      for( a <- 0 to X.length-1) { // a adalah urutannya
+        // Print Cluster dan Jumlah Object
+        println("\nKlaster Ke-: "+ X(a)._1) // ini nomor urut clusternya
+        this.outputText += "\nKlaster Ke-: " + X(a)._1 + "\n"
+        var sum = X(a)._2._1
+        var dims = sum.size
+        var count = X(a)._2._2
+        var min = X(a)._2._3
+        var max = X(a)._2._4
+        var dev = X(a)._2._5
+
+        this.outputText += "Jumlah Objek Klaster ke-" + X(a)._1 + " : " + count + "\n"
+        println("Jumlah Objek Klaster ke-" + X(a)._1 + " : " + count)
+
+        for (i <- 0 to dims - 1) {
+          // Print Average
+          println("Rata-rata atribut " + (i + 1) + " : " + sum.apply(i) / count)
+          this.outputText += "Rata-rata atribut " + (i + 1) + " : " + sum.apply(i) / count +"\n"
+        }
+        for (i <- 0 to dims - 1) {
+          // Print Min
+          println("Minimum atribut " + (i + 1) + " : " + min(i))
+          this.outputText += "Minimum atribut " + (i + 1) + " : " + min(i) +"\n"
+        }
+        for (i <- 0 to dims - 1) {
+          // Print Max
+          println("Maximum atribut " + (i + 1) + " : " + max(i))
+          this.outputText += "Maximum atribut " + (i + 1) + " : " + max(i) +"\n"
+        }
+        for (i <- 0 to dims - 1) {
+          //Print Deviasi
+          var standarDeviasi = scala.math.sqrt(((count * dev(i)) - (sum.apply(i) * sum.apply(i))) / (count * (count - 1)))
+          println("Deviasi atribut "+ (i+1) + " : " + standarDeviasi)
+          this.outputText += "Deviasi atribut "+ (i+1) + " : " + standarDeviasi+"\n"
+        }
+      }
+
+      val newCenters3 = newCenters2.mapValues { case (sum, count, min, max, dev) =>
         BLAS.scal(1.0 / count, sum)
         new VectorWithNorm(sum)
       }
-
-      //Customize Print output
-      val newVarOut = newCenters2.mapValues { case (sum, count, varOut, countOut) =>
-        (varOut)
-        //Todo buat lebih efisien
-      }
-      val newCountOut = newCenters2.mapValues { case (sum, count, varOut, countOut) =>
-        (countOut)
-      }
-      if (!customFlag) {
-        var test = newVarOut.collectAsMap().apply(0).toArray
-        var endDataCount = newVarOut.collect().apply(0)._2
-        var endCountOut = newCountOut.collect().apply(0)._2
-
-        var indexElement = endDataCount.apply(0)
-        var dataCount: Double = endDataCount.apply(1)
-        var minValue: Double = endDataCount.apply(2)
-        var maxValue: Double = endDataCount.apply(3)
-        var variasi1: Double = endDataCount.apply(4)
-        var variasi2: Double = endDataCount.apply(5)
-        var jumlahElemenCluster: Array[Double] = endCountOut.toArray
-        printAllOutput(dataCount.toInt, minValue, maxValue, variasi1, variasi2, jumlahElemenCluster)
-        customFlag = true
-      }
-      //end of customize
 
       val newCenters = newCenters3.collectAsMap()
 
@@ -391,9 +382,9 @@ class CustomKMeans (
     logInfo(s"The cost is $cost.")
     println(s"The cost is $cost.")
 
-    this.outputText += "KMeans converged in " + iteration + " iterations"
+    this.outputText += "KMeans converged in " + iteration + " iterations.\n"
     this.outputText += "Cost : " + cost + "\n"
-    //println(outputText)
+    printToFileTxt(outputText)
 
     new KMeansModel(centers.map(_.vector))
   }
@@ -544,8 +535,8 @@ object CustomKMeans {
     * Returns the index of the closest center to the given point, as well as the squared distance.
     */
   def findClosest(
-                           centers: TraversableOnce[VectorWithNorm],
-                           point: VectorWithNorm): (Int, Double) = {
+                   centers: TraversableOnce[VectorWithNorm],
+                   point: VectorWithNorm): (Int, Double) = {
     var bestDistance = Double.PositiveInfinity
     var bestIndex = 0
     var i = 0
@@ -573,8 +564,8 @@ object CustomKMeans {
     * Returns the K-means cost of a given point against the given cluster centers.
     */
   def pointCost(
-                         centers: TraversableOnce[VectorWithNorm],
-                         point: VectorWithNorm): Double =
+                 centers: TraversableOnce[VectorWithNorm],
+                 point: VectorWithNorm): Double =
     findClosest(centers, point)._2
 
   /**
@@ -582,8 +573,8 @@ object CustomKMeans {
     * [[org.apache.spark.mllib.util.MLUtils#fastSquaredDistance]].
     */
   def fastSquaredDistance(
-                                   v1: VectorWithNorm,
-                                   v2: VectorWithNorm): Double = {
+                           v1: VectorWithNorm,
+                           v2: VectorWithNorm): Double = {
     MLUtils.fastSquaredDistance(v1.vector, v1.norm, v2.vector, v2.norm)
   }
 
