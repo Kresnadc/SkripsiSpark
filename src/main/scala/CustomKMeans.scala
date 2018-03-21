@@ -237,7 +237,7 @@ class CustomKMeans (
       val bcCenters = sc.broadcast(centers) //broadcast agar bisa dibaca secara distributed
       val bcFlag = sc.broadcast(customFlag)
       // Print iteration
-      this.outputText += "Iterasi K-Means ke- :" + (iteration+1) + "\n"
+      this.outputText += "\nIterasi K-Means ke- :" + (iteration+1) + "\n"
 
       // Find the new centers
       val newCenters1 = data.mapPartitions { points =>
@@ -357,9 +357,11 @@ class CustomKMeans (
       //Update the cluster centers and costs
       converged = true
       newCenters.foreach { case (j, newCenter) =>
-        if (converged && CustomKMeans.fastSquaredDistance(newCenter, centers(j)) > epsilon * epsilon) {
+        val deltaJ = CustomKMeans.fastSquaredDistance(newCenter, centers(j))
+        if (converged && deltaJ > epsilon * epsilon) {
           converged = false
         }
+        this.outputText += "Delta J cluster" + j + " : " + deltaJ + "\n"
         centers(j) = newCenter
         println("indexCentroid = "+j+", newCentroid = "+newCenter.vector)
       }
