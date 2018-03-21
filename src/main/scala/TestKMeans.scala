@@ -2,6 +2,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 //import org.apache.spark.mllib.clustering.KMeans
 import org.apache.spark.mllib.clustering.KMeansModel
 import org.apache.spark.mllib.linalg.Vectors
+import scala.swing._
 
 object TestKMeans {
 
@@ -34,7 +35,6 @@ object TestKMeans {
     // New Cluster Center
     println("Cluster Centers: ")
     sameModel.clusterCenters.foreach(println)
-
 
     //Stop
     println("Type 's' to stop process:")
