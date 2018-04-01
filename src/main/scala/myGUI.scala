@@ -6,7 +6,7 @@ import org.apache.spark.mllib.clustering.KMeansModel
 import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.mllib.linalg.Vector
 import org.apache.spark.mllib.classification.{NaiveBayes, NaiveBayesModel}
-
+import org.apache.spark.mllib.regression.LabeledPoint
 
 import scala.swing._
 import scala.swing.event._
@@ -15,13 +15,17 @@ import scala.io.{BufferedSource, Source}
 
 
 object myGUI extends SimpleSwingApplication {
+  val optionCB = new ComboBox(Seq("KMeans","Naive Bayes")){}
   val inputFileTF = new TextField("E:\\", 25){ preferredSize = new Dimension( 300, 25)}
   val outputFileTF = new TextField("E:\\", 25){ preferredSize = new Dimension( 300, 25)}
   val outputTextTA = new TextArea(){ text = ""; lineWrap = true; rows = 10; columns = 30 }
   val scrollOutputTextTA = new ScrollPane(outputTextTA)
   val loadingIcon = new Label("Loading Icon"){visible = false}
+  val executeBtn = new Button()
 
   var outputTextFile : BufferedSource = null
+
+  override def main(args: Array[String]) = super.main(args)
 
   override def top: Frame = new MainFrame{
     preferredSize = new Dimension(1000,750)
@@ -37,7 +41,11 @@ object myGUI extends SimpleSwingApplication {
         new BoxPanel(Orientation.Vertical) {
           contents += new FlowPanel(){
             contents += new Label("Choose :")
-            contents += new ComboBox(Seq("KMeans","Naive Bayes"))
+            contents += optionCB
+            border = BorderFactory.createCompoundBorder(
+              BorderFactory.createTitledBorder(""),
+              BorderFactory.createEmptyBorder(5,5,5,5)
+            )
           }
         }
       ) = West
@@ -72,8 +80,8 @@ object myGUI extends SimpleSwingApplication {
             }
           }
           contents += new FlowPanel() {
-            contents += new Button(){
-              action = new Action("Execute") {
+            contents += executeBtn
+              executeBtn.action = new Action("Execute") {
                 override def apply(): Unit = {
                   loadingIcon.text = "Executing..."
                   loadingIcon.visible = true
@@ -83,7 +91,7 @@ object myGUI extends SimpleSwingApplication {
                     override def done(): Unit =
                       loadingIcon.text = "Completed"
                   }.execute()
-                }
+
               }
             }
           }
@@ -100,14 +108,54 @@ object myGUI extends SimpleSwingApplication {
               preferredSize = new Dimension(550, 350)
             }
           }
+          border = BorderFactory.createCompoundBorder(
+            BorderFactory.createTitledBorder(""),
+            BorderFactory.createEmptyBorder(5,5,5,5)
+          )
         }
       ) = Center
 
       layout(
         new FlowPanel(){
-          contents += new Label("============== &&& ==============")
+          contents += new Label("2014730048")
         }
       ) = South
+
+      reactions += {
+        case SelectionChanged(optionCB) => changeView()
+      }
+      listenTo(optionCB.selection)
+
+      def changeView(): Unit ={
+        print(optionCB.selection.item)
+        if(optionCB.selection.item == "Naive Bayes"){
+          executeBtn.action = new Action("Execute") {
+            override def apply(): Unit = {
+              loadingIcon.text = "Executing..."
+              loadingIcon.visible = true
+              new SwingWorker[Unit, String]() {
+                override def doInBackground(): Unit =
+                  runNaiveBayes
+                override def done(): Unit =
+                  loadingIcon.text = "Completed"
+              }.execute()
+            }
+          }
+        }else {
+          executeBtn.action = new Action("Execute") {
+            override def apply(): Unit = {
+              loadingIcon.text = "Executing..."
+              loadingIcon.visible = true
+              new SwingWorker[Unit, String]() {
+                override def doInBackground(): Unit =
+                  runKMeans(inputFileTF.text, outputFileTF.text, 3, 3)
+                override def done(): Unit =
+                  loadingIcon.text = "Completed"
+              }.execute()
+            }
+          }
+        }
+      }
     }
   }
 
@@ -125,16 +173,15 @@ object myGUI extends SimpleSwingApplication {
 
     // Load and parse the data
     // val data = sc.textFile("hdfs://localhost:9001/user/hadoop/iris-dataset")
-    val input = "E:/InputTest/sample_mllib_kmeans_data.txt"
-    val data = sc.textFile(input)
+    val data = sc.textFile("E:/InputTest/sample_mllib_kmeans_data2.txt")
     //println("Element of RDD: "+ data.count())
-    val parsedData = data.map(s => Vectors.dense(s.split(' ').map(_.toDouble))).cache()
+    val a = data.map(s => s.split(';'))
+    val b = a.map(s => Array(s(2), s(3), s(4), s(5), s(6), s(7), s(8)))
+    val parsedData = b.map(s => Vectors.dense(s.map(_.toDouble))).cache()
     //println("Parsed Data :")
     //parsedData.collect().foreach(println)
 
     // Cluster the data into two classes using KMeans
-    val numClusters = 5
-    val numIterations = 20
     val clusters = CustomKMeans.train(parsedData, numClusters, numIterations)
 
     // Evaluate clustering by computing Within Set Sum of Squared Errors
@@ -170,11 +217,22 @@ object myGUI extends SimpleSwingApplication {
     // Load and parse the data file.
     println("Load and parse the data file.")
     // Sparse data format LibSVM
-    val data = org.apache.spark.mllib.util.MLUtils.loadLibSVMFile(sc, "E:/InputTest/sample_mllib_naive.txt")
-    //data.collect().foreach(println)
-    val abc = data.collect()(1)
+    //    val data = MLUtils.loadLibSVMFile(sc, "E:/InputTest/sample_mllib_naive.txt")
+    //    data.collect().foreach(println)
+    //    val abc = data.collect()(1)
+
+    val data = sc.textFile("E:/InputTest/sample_mllib_naive2.txt")
+
+    val a = data.map(s => s.split(';'))
+    val b = a.map(s => Array(s(2), s(3), s(4), s(5), s(6), s(7), s(8)))
+    val parsedData = b.map(s => Vectors.dense(s.map(_.toDouble))).cache()
+
+    parsedData.collect().foreach(println)
+    val finalData = parsedData.map(s => LabeledPoint(s.apply(5), Vectors.dense(Array(s.apply(0), s.apply(1), s.apply(2), s.apply(3), s.apply(4), s.apply(6) ))))
+    finalData.collect().foreach(println)
+
     // Split data into training (60%) and test (40%).
-    val Array(training, test) = data.randomSplit(Array(0.6, 0.4))
+    val Array(training, test) = finalData.randomSplit(Array(0.6, 0.4))
 
     val model = NaiveBayes.train(training, lambda = 1.0, modelType = "multinomial")
 
@@ -185,17 +243,20 @@ object myGUI extends SimpleSwingApplication {
     println("Save and load model")
     model.save(sc, "E:/Output/ModelNaive/")
     val naiveModel = NaiveBayesModel.load(sc, "E:/Output/ModelNaive/")
+
     // End Contoh
     println("model type : "+ naiveModel.modelType)
-    val res = naiveModel.predict(abc.features)
-    println("result " + res)
+    val predictData = sc.textFile("E:/InputTest/sample_mllib_naive_predict.txt")
+    val parsedPredictData = predictData.map(s => Vectors.dense(s.split(';').map(_.toDouble))).cache()
 
+    val res = naiveModel.predict(parsedPredictData)
+
+    res.collect().foreach(outputTextTA.text += "\n" + _)
     //    val sqlContext = new org.apache.spark.sql.SQLContext(sc)
     //    val newDataDF = sqlContext.read.parquet("E:/Output/ModelNaive/data/*.parquet")
     //    val haha = newDataDF.collect()
     //    val keNol = haha(1)
     //    println(newDataDF)
-
     sc.stop()
   }
 
