@@ -2,7 +2,6 @@ import org.apache.spark.{SparkConf, SparkContext}
 //import org.apache.spark.mllib.clustering.KMeans
 import org.apache.spark.mllib.clustering.KMeansModel
 import org.apache.spark.mllib.linalg.Vectors
-import scala.swing._
 
 object TestKMeans {
 
@@ -13,11 +12,14 @@ object TestKMeans {
 
     // Load and parse the data
     // val data = sc.textFile("hdfs://localhost:9001/user/hadoop/iris-dataset")
-    val data = sc.textFile("E:/InputTest/sample_mllib_kmeans_data.txt")
+    val data = sc.textFile("E:/InputTest/sample_mllib_kmeans_data2.txt")
     //println("Element of RDD: "+ data.count())
-    val parsedData = data.map(s => Vectors.dense(s.split(' ').map(_.toDouble))).cache()
-    //println("Parsed Data :")
-    //parsedData.collect().foreach(println)
+    val a = data.map(s => s.split(';'))
+    val b = a.map(s => Array(s(2), s(3), s(4), s(5), s(6), s(7), s(8)))
+    val parsedData = b.map(s => Vectors.dense(s.map(_.toDouble))).cache()
+
+    println("Parsed Data :")
+    parsedData.collect().foreach(println)
 
     // Cluster the data into two classes using KMeans
     val numClusters = 5
