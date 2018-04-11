@@ -1,7 +1,8 @@
 import org.apache.spark.{SparkConf, SparkContext}
 //import org.apache.spark.mllib.clustering.KMeans
 import org.apache.spark.mllib.clustering.KMeansModel
-import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.rdd.RDD
+import org.apache.spark.mllib.linalg.{Vector, Vectors}
 
 object TestKMeans {
 
@@ -12,14 +13,10 @@ object TestKMeans {
 
     // Load and parse the data
     // val data = sc.textFile("hdfs://localhost:9001/user/hadoop/iris-dataset")
-    val data = sc.textFile("E:/InputTest/sample_mllib_kmeans_data2.txt")
-    //println("Element of RDD: "+ data.count())
-    val a = data.map(s => s.split(';'))
-    val b = a.map(s => Array(s(2), s(3), s(4), s(5), s(6), s(7), s(8)))
-    val parsedData = b.map(s => Vectors.dense(s.map(_.toDouble))).cache()
+    val parsedData = preprocessingDataPhoneCSV(sc, "E:/InputTest/sms-call-internet-mi-2013-11-07.csv")
 
-    println("Parsed Data :")
-    parsedData.collect().foreach(println)
+    //println("Parsed Data :")
+    //parsedData.collect().foreach(println)
 
     // Cluster the data into two classes using KMeans
     val numClusters = 5
@@ -47,5 +44,36 @@ object TestKMeans {
       scanner = new java.util.Scanner(System.in)
     }
     sc.stop()
+  }
+
+  def preprocessingDataPhoneCSV(sc: SparkContext, path: String): RDD[Vector] ={
+    //Read the file
+    //datetime,CellID,countrycode,smsin,smsout,callin,callout,internet
+    val csv = sc.textFile(path)  // original file
+
+    //To find the headers
+    val header = csv.first;
+
+    //To remove the header
+    val data = csv.filter(_(0) != header(0));
+
+    //To create a RDD of (Vector) pairs
+    data.map { line =>
+      val parts = line.split(",", -1)
+      Vectors.dense(
+        parseDouble(parts(3)),
+        parseDouble(parts(4)),
+        parseDouble(parts(5)),
+        parseDouble(parts(6))
+      )
+    }.cache()
+  }
+
+  def parseDouble(str: String): Double ={
+    if(str != ""){
+      str.toDouble
+    }else{
+      0.0
+    }
   }
 }
