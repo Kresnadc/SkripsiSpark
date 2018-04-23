@@ -27,7 +27,7 @@ class CustomKMeans (
                      private var epsilon: Double,
                      private var seed: Long,
                      private var outputText: String,
-                     private var arrResult: Array[Array[Double]],
+                     private var arrResult: Array[Array[Array[Double]]],
                      private var resultConf: Array[Boolean]) extends Serializable with Logging {
 
   /**
@@ -53,12 +53,13 @@ class CustomKMeans (
     * Result of last iteration (arrResult).
     *
     */
-  def getResult: Array[Array[Double]] = arrResult
+  def getResult: Array[Array[Array[Double]]] = arrResult
 
   def getResultConf: Array[Boolean] = resultConf
 
-  def setResultConf(conf: Array[Boolean]) ={
+  def setResultConf(conf: Array[Boolean]): this.type ={
     this.resultConf = conf
+    this
   }
 
   /**
@@ -196,7 +197,6 @@ class CustomKMeans (
     // Compute squared norms and cache them.
     val norms = data.map(Vectors.norm(_, 2.0))
     norms.persist()
-    // Zip RDD
     val zippedData = data.zip(norms).map { case (v, norm) =>
       new VectorWithNorm(v, norm)
     }
@@ -241,6 +241,8 @@ class CustomKMeans (
 
     val iterationStartTime = System.nanoTime()
 
+    arrResult = new Array[Array[Array[Double]]](this.k)
+
     instr.foreach(_.logNumFeatures(centers.head.vector.size))
 
     // Execute iterations of Lloyd's algorithm until converged
@@ -248,11 +250,8 @@ class CustomKMeans (
       val costAccum = sc.doubleAccumulator
       val bcCenters = sc.broadcast(centers) //broadcast agar bisa dibaca secara distributed
 
-      // Print iteration
-      //this.outputText += "\nIterasi K-Means ke- :" + (iteration+1) + "\n"
-
       // Find the new centers
-      val newCenters1 = data.mapPartitions { points =>
+      val totalContribs = data.mapPartitions { points =>
         val thisCenters = bcCenters.value
         val dims = thisCenters.head.vector.size
 
@@ -266,7 +265,7 @@ class CustomKMeans (
           val (bestCenter, cost) = CustomKMeans.findClosest(thisCenters, point)
           costAccum.add(cost)
           val sum = sums(bestCenter)
-          BLAS.axpy(1.0, point.vector, sum) // alpha x plus y (y = ax+y) this will update sum(y+= a*x) which is sums(bestcenter)
+          BLAS.axpy(1.0, point.vector, sum)
           counts(bestCenter) += 1
 
           // Minimum
@@ -292,10 +291,7 @@ class CustomKMeans (
           BLAS.axpy(1.0, Vectors.dense(arrDev), dev)
         }
         counts.indices.filter(counts(_) > 0).map(j => (j, (sums(j), counts(j), mins(j), maxs(j), devs(j)))).iterator
-      }
-
-      //newCenters1.collect().foreach(println)
-      val newCenters2 = newCenters1.reduceByKey { case ((sum1, count1, min1, max1, dev1),
+      }.reduceByKey { case ((sum1, count1, min1, max1, dev1),
       (sum2, count2, min2, max2, dev2)) =>
         BLAS.axpy(1.0, sum2, sum1)
         // Minimum dan Maximum atribut
@@ -309,79 +305,82 @@ class CustomKMeans (
         var maxRes: Vector = Vectors.dense(arrMax)
         // Deviasi atribut
         BLAS.axpy(1.0, dev2, dev1)
-        //res
+
         (sum1, count1 + count2, minRes, maxRes, dev1)
-      }
-
-      val newCenters3 = newCenters2.mapValues { case (sum, count, min, max, dev) =>
-        BLAS.scal(1.0 / count, sum)
-        new VectorWithNorm(sum)
-      }
-
-      val newCenters = newCenters3.collectAsMap()
+      }.collectAsMap()
 
       //bcCenters.destroy(blocking = false)
       bcCenters.destroy()
 
       //Update the cluster centers and costs
       converged = true
-      newCenters.foreach { case (j, newCenter) =>
-        val deltaJ = CustomKMeans.fastSquaredDistance(newCenter, centers(j))
-        if (converged && deltaJ > epsilon * epsilon) {
+      totalContribs.foreach { case (j, (sum, count, min, max, dev)) =>
+        var sumCopy = sum.toArray
+        BLAS.scal(1.0 / count, sum)
+        val newCenter = new VectorWithNorm(sum)
+        if (converged && CustomKMeans.fastSquaredDistance(newCenter, centers(j)) > epsilon * epsilon) {
           converged = false
         }
-        //this.outputText += "Delta J cluster" + j + " : " + deltaJ + "\n"
         centers(j) = newCenter
-        println("indexCentroid = "+j+", newCentroid = "+newCenter.vector)
+        println(s"Center $j")
+        newCenter.vector.toArray.foreach(println)
+
+        if(iteration == maxIterations || !converged){
+          // Print Cluster dan Jumlah Object
+          //println("\nKlaster Ke-: "+ j)
+          //println("Jumlah Objek Klaster ke-" + j + " : " + count)
+
+          var dims = sum.size
+          var mins : Array[Double] = null
+          var maxs : Array[Double] = null
+          var mean : Array[Double] = null
+          var deviasi : Array[Double] = null
+
+          //If conf not set, Set all true
+          if(resultConf == null){
+            resultConf = Array.fill[Boolean](4)(true)
+          }
+          if(resultConf(0)){
+            mean = Array.fill[Double](dims)(0)
+            println(s"Mean $j:")
+            for (i <- 0 until dims) {
+              mean(i) = (sum.apply(i))
+              println(mean(i))
+              //mean(i) =
+              // Print Average
+              println("Rata-rata atribut " + (i + 1) + " : " + mean(i))
+              //this.outputText += "Rata-rata atribut " + (i + 1) + " : " + mean(i) +"\n"
+            }
+          }
+          if(resultConf(1)){
+            mins = min.toArray
+            for (i <- 0 to dims - 1) {
+              // Print Mininimum
+              println("Minimum atribut " + (i + 1) + " : " + min.apply(i))
+              //this.outputText += "Minimum atribut " + (i + 1) + " : " + min(i) +"\n"
+            }
+          }
+          if(resultConf(2)){
+            maxs = max.toArray
+            for (i <- 0 to dims - 1) {
+              // Print Max
+              println("Maximum atribut " + (i + 1) + " : " + max.apply(i))
+              //this.outputText += "Maximum atribut " + (i + 1) + " : " + max(i) +"\n"
+            }
+          }
+          if(resultConf(3)){
+            deviasi = Array.fill[Double](dims)(0)
+            for (i <- 0 to dims - 1) {
+              deviasi(i) = scala.math.sqrt(((count * dev(i)) - (sumCopy(i) * sumCopy(i))) / (count * (count - 1)))
+              println("Deviasi atribut "+ (i+1) + " : " + deviasi(i))
+              //this.outputText += "Deviasi atribut "+ (i+1) + " : " + deviasi(i)+"\n"
+            }
+          }
+          arrResult(j) = Array(Array(count), mean, mins, maxs, deviasi)
+        }
       }
       cost = costAccum.value
       iteration += 1
-
-      if(iteration == maxIterations || converged){
-        var X = newCenters2.collect()
-
-        for( a <- 0 to X.length-1) { // a adalah urutannya
-          // Print Cluster dan Jumlah Object
-          println("\nKlaster Ke-: "+ X(a)._1) // ini nomor urut clusternya
-          //this.outputText += "\nKlaster Ke-: " + X(a)._1 + "\n"
-          var sum = X(a)._2._1
-          var dims = sum.size
-          var count = X(a)._2._2
-          var min = X(a)._2._3
-          var max = X(a)._2._4
-          var dev = X(a)._2._5
-
-          //this.outputText += "Jumlah Objek Klaster ke-" + X(a)._1 + " : " + count + "\n"
-          println("Jumlah Objek Klaster ke-" + X(a)._1 + " : " + count)
-
-          var mean = Array.fill[Double](dims)(0)
-          var deviasi = Array.fill[Double](dims)(0)
-
-          for (i <- 0 to dims - 1) {
-            // Print Average
-            mean(i) = (sum.apply(i) / count)
-            println("Rata-rata atribut " + (i + 1) + " : " + mean(i))
-            //this.outputText += "Rata-rata atribut " + (i + 1) + " : " + mean(i) +"\n"
-          }
-          for (i <- 0 to dims - 1) {
-            // Print Min
-            println("Minimum atribut " + (i + 1) + " : " + min(i))
-            //this.outputText += "Minimum atribut " + (i + 1) + " : " + min(i) +"\n"
-          }
-          for (i <- 0 to dims - 1) {
-            // Print Max
-            println("Maximum atribut " + (i + 1) + " : " + max(i))
-            //this.outputText += "Maximum atribut " + (i + 1) + " : " + max(i) +"\n"
-          }
-          for (i <- 0 to dims - 1) {
-            //Print Deviasi
-            deviasi(i) = scala.math.sqrt(((count * dev(i)) - (sum.apply(i) * sum.apply(i))) / (count * (count - 1)))
-            println("Deviasi atribut "+ (i+1) + " : " + deviasi(i))
-            //this.outputText += "Deviasi atribut "+ (i+1) + " : " + deviasi(i)+"\n"
-          }
-          arrResult = Array(mean, min.toArray, max.toArray, deviasi)
-        }
-      }
     }
 
     val iterationTimeInSeconds = (System.nanoTime() - iterationStartTime) / 1e9
@@ -398,26 +397,33 @@ class CustomKMeans (
 
     logInfo(s"The cost is $cost.")
     println(s"The cost is $cost.")
-    var strResult = "("
+
+    var strResult = ""
     for (i <- 0 until arrResult.length) {
-      strResult += "["
+      strResult += s"\nPola ke ${i+1} :("
       for (j <- 0 until arrResult(i).length) {
-        strResult += arrResult(i)(j)
-        if(j < arrResult(i).length-1){
-          strResult+= ", "
+        if (arrResult(i)(j) != null) {
+          strResult += "["
+          for (k <- 0 until arrResult(i)(j).length) {
+            strResult += arrResult(i)(j)(k)
+            if (k < arrResult(i)(j).length - 1) {
+              strResult += ", "
+            }
+          }
+          if (j < arrResult(i).length - 1) {
+            strResult += "], "
+          } else {
+            strResult += "]"
+          }
         }
       }
-      if(i < arrResult.length-1){
-        strResult+= "], "
-      }else{
-        strResult+= "]"
-      }
+      strResult += ")\n"
     }
-    strResult += ")"
+
 
     this.outputText += "Result = " + strResult + "\n"
     this.outputText += "KMeans converged in " + iteration + " iterations.\n"
-    this.outputText += f"KMeans iteration time : $iterationTimeInSeconds%.3f seconds."
+    this.outputText += f"K-Means iteration time : $iterationTimeInSeconds%.3f seconds.\n"
     this.outputText += "Cost : " + f"$cost%.3f" + "\n"
     printToFileTxt(outputText)
 
@@ -562,6 +568,20 @@ object CustomKMeans {
              maxIterations: Int): KMeansModel = {
     new CustomKMeans().setK(k)
       .setMaxIterations(maxIterations)
+      .run(data)
+  }
+
+  /**
+    * Trains a k-means model using specified parameters and the default values for unspecified.
+    */
+  def train(
+             data: RDD[Vector],
+             k: Int,
+             maxIterations: Int,
+             resultConf: Array[Boolean]): KMeansModel = {
+    new CustomKMeans().setK(k)
+      .setMaxIterations(maxIterations)
+      .setResultConf(resultConf)
       .run(data)
   }
 

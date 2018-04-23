@@ -1,60 +1,137 @@
-package org.apache.spark.examples.mllib
-
 import org.apache.spark.{SparkConf, SparkContext}
-// Naive Bayes
 import org.apache.spark.mllib.classification.{NaiveBayes, NaiveBayesModel}
 import org.apache.spark.mllib.linalg.{Vector, Vectors}
 import org.apache.spark.mllib.regression.LabeledPoint
+import org.apache.spark.rdd.RDD
 
-import org.apache.spark.mllib.util.MLUtils
-// Naive Bayes
 
-object NaiveBayesTester {
+object NaiveBayesMain {
+  var outputText: String = ""
+  var model: NaiveBayesModel = null;
 
-  def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("NaiveBayesExample").setMaster("local")
-    val sc = new SparkContext(conf)
-    // Contoh :
+//  def main(args: Array[String]): Unit = {
+//  inPath = "E:/InputTest/Iris.csv"
+//  saveModelPath = "E:/Output/ModelNaive/"
+//  trainingPercent = 0.6
+//  testPercent = 0.4
+//    runNaiveBayes("E:/InputTest/Iris.csv", "E:/Output/ModelNaive/", 0.6, 0.4)
+//  }
 
-    // Load and parse the data file.
+  def startTraining(sc: SparkContext,
+                    inPath: String,
+                    saveModelPath: String,
+                    trainingPercent: Double,
+                    testPercent: Double): Unit = {
+    //Start Training
+    println("Start Training")
+
+    // Load data file.
     println("Load and parse the data file.")
-    // Sparse data format LibSVM
-//    val data = MLUtils.loadLibSVMFile(sc, "E:/InputTest/sample_mllib_naive.txt")
-//    data.collect().foreach(println)
-//    val abc = data.collect()(1)
+    val data = preprocessingDataIrisCSV(sc, inPath)
 
-    val data = sc.textFile("E:/InputTest/sample_mllib_naive2.txt")
-    val parsedData = data.map(s => Vectors.dense(s.split(';').map(_.toDouble))).cache()
-    parsedData.collect().foreach(println)
-    val finalData = parsedData.map(s => LabeledPoint(s.apply(7), Vectors.dense(Array(s.apply(2), s.apply(3), s.apply(4), s.apply(5), s.apply(6), s.apply(8)))))
-    finalData.collect().foreach(println)
+    //Split data training (Double cth: 40% => 0.4)
+    val Array(training, test) = data.randomSplit(Array(trainingPercent, testPercent))
 
-    // Split data into training (60%) and test (40%).
-    val Array(training, test) = finalData.randomSplit(Array(0.6, 0.4))
+    //Train model
+    val initStartTrainingTime = System.nanoTime()
+    val modelNaive = NaiveBayes.train(training, lambda = 1.0, modelType = "multinomial")
+    val trainingTimeInSecond = (System.nanoTime() - initStartTrainingTime)
 
-    val model = NaiveBayes.train(training, lambda = 1.0, modelType = "multinomial")
+    //Test model with testPercent
+    val initStartTestTime = System.nanoTime()
+    if(modelNaive == null){
+      println("model null")
+    }
 
-    val predictionAndLabel = test.map(p => (model.predict(p.features), p.label))
+    val predictionAndLabel = test.map(p =>
+      (modelNaive.predict(p.features), p.label)
+    )
+    val testTimeInSecond = (System.nanoTime() - initStartTestTime)
     val accuracy = 1.0 * predictionAndLabel.filter(x => x._1 == x._2).count() / test.count()
+    outputText += "Test Accuracy : " + accuracy +"\n"
 
     // Save and load model
-    println("Save and load model")
-    model.save(sc, "E:/Output/ModelNaive/")
-    val naiveModel = NaiveBayesModel.load(sc, "E:/Output/ModelNaive/")
+    modelNaive.save(sc, saveModelPath)
+    this.model = modelNaive
+    outputText += "Trained Model Saved! Location at '"+ saveModelPath +"'\n"
+    outputText += "Data Labels : \n"
+    this.model.labels.foreach(outputText += _ +"\n")
 
-    // End Contoh
-    println("model type : "+ naiveModel.modelType)
-    val predictData = sc.textFile("E:/InputTest/sample_mllib_naive_predict.txt")
-    val parsedPredictData = predictData.map(s => Vectors.dense(s.split(';').map(_.toDouble))).cache()
+    outputText += "\nSplit data into training ("+ (trainingPercent * 100).toInt +
+      "%) and test ("+ (testPercent * 100).toInt +"%)\n"
+    outputText += "Test Time : " + (trainingTimeInSecond / 1000000000.0) +"(Second) \n"
+    outputText += "Training Time : " + (trainingTimeInSecond / 1000000000.0) +"(Second)\n"
+  }
 
-    val res = naiveModel.predict(parsedPredictData)
-    res.collect().foreach(println)
-    //    val sqlContext = new org.apache.spark.sql.SQLContext(sc)
-    //    val newDataDF = sqlContext.read.parquet("E:/Output/ModelNaive/data/*.parquet")
-    //    val haha = newDataDF.collect()
-    //    val keNol = haha(1)
-    //    println(newDataDF)
+  def predictByModel(sc: SparkContext, inputDataPath: String, savedModelPath: String, predictResultPath: String): String ={
+    val data = preprocessingPredictDataIrisCSV(sc, inputDataPath)
 
-    sc.stop()
+    if(this.model == null){
+      val model = NaiveBayesModel.load(sc, savedModelPath)
+    }
+
+    var result = this.model.predict(data)
+    result.saveAsTextFile(predictResultPath)
+
+    var predictionResult: String = "Result saved at "+ predictResultPath +
+      "\nSample preditction result(top 100):\n"
+    result.takeOrdered(100).foreach(kelas => predictionResult+= kelas + "\n")
+    predictionResult
+  }
+
+  def preprocessingDataIrisCSV(sc: SparkContext, path: String) : RDD[LabeledPoint]= {
+    //Read the file
+    //Id,SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm,Species
+    val csv = sc.textFile(path)  // original file
+
+    //To find the headers
+    val header = csv.first;
+
+    //To remove the header
+    val data = csv.filter(_(0) != header(0));
+
+    //To create a RDD of (label, features) pairs
+    data.map { line =>
+      val parts = line.split(',')
+      LabeledPoint(defineClassIris(parts(5)), Vectors.dense(
+        parts(1).toDouble,
+        parts(2).toDouble,
+        parts(3).toDouble,
+        parts(4).toDouble))
+    }.cache()
+  }
+
+  def preprocessingPredictDataIrisCSV(sc: SparkContext, path: String) : RDD[Vector]= {
+    //Read the file
+    //Id, SepalLengthCm, SepalWidthCm, PetalLengthCm, PetalWidthCm,Species
+    val csv = sc.textFile(path)  // original file
+
+    //Find the headers
+    val header = csv.first;
+
+    //Remove the header
+    val data = csv.filter(_(0) != header(0));
+
+    //To create a RDD of (label, features) pairs
+    data.map { line =>
+      val parts = line.split(',')
+      Vectors.dense(
+        parts(1).toDouble,
+        parts(2).toDouble,
+        parts(3).toDouble,
+        parts(4).toDouble)
+    }.cache()
+  }
+
+  def defineClassIris(label : String): Double = {
+    // Iris-setosa, Iris-versicolor, Iris-virginica
+    if(label == "Iris-setosa"){
+      1.0
+    }else if(label == "Iris-versicolor"){
+      2.0
+    }else {
+      3.0
+    }
   }
 }
+

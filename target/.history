@@ -1,0 +1,115 @@
+libraryDependencies
+set scalaVersion := "2.11.8"
+session save
+libraryDependencies
+set name := "projectSkripsi2014730048"
+set version := "1.0"
+session save
+reload
+libraryDependencies
+set libraryDependencies += "org.apache.spark" % "spark-core_2.11" % "2.2.0"
+session save
+reload
+libraryDependencies
+set libraryDependencies += "org.apache.spark" % "spark-mllib_2.11" % "2.2.0"
+session save
+reload
+libraryDependencies
+exit
+libraryDependencies
+compile
+CCC
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+libraryDependencies
+set libraryDependencies += "org.scala-lang" % "scala-swing" % "2.11.0-M7"
+session save
+reload
+libraryDependencies
+compile
+run
+compile
+run
+package
+libraryDependencies
+compile
+package
+run
+compile
+run
+package
+run
+compile
+package
+assembly
+:q
+q
+quit
+ls
+  
+assembly
+compile
+assembly
+compile
+run
+assembly
+compile
+assembly
+compile
+package
+assembly
+compile
+package
+assembly
+compile
+package
+compile
+assembly
+compile
+package
+assembly
+compile
+package
+assembly
+compile
+package
+assembly
+compile
+assembly
+compile
+package
+assembly
+libraryDependencies
+assembly
+compile
+package
+assembly
+show discoveredMainClasses
+assembly
+compile
+package
+assembly
+compile
+package
+assembly
+compile
+package
+show discoveredMainClasses
+assembly
+compile
+package
+libraryDependencies
