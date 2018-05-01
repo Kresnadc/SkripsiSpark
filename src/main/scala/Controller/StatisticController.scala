@@ -1,12 +1,16 @@
-import java.io.{File, PrintWriter}
-import org.apache.spark.mllib.linalg.{Vector, Vectors}
-import org.apache.spark.SparkContext
-import org.apache.spark.mllib.stat.{MultivariateStatisticalSummary, Statistics}
+package Controller
 
-object SummaryStatistic {
+import java.io._
+
+import org.apache.hadoop.fs._
+import org.apache.spark.SparkContext
+import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.mllib.stat.{MultivariateStatisticalSummary, Statistics};
+
+object StatisticController {
   var outputText: String = ""
 
-  def run(sc: SparkContext,
+  def runStatistic(sc: SparkContext,
           inPath: String,
           outPath: String,
           conf: Array[Boolean]): Unit = {

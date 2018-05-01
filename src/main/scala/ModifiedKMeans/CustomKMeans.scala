@@ -1,3 +1,5 @@
+package ModifiedKMeans
+
 import scala.collection.mutable.ArrayBuffer
 
 //import org.apache.spark.annotation.Since
@@ -14,10 +16,10 @@ import org.apache.spark.storage.StorageLevel
 //import org.apache.spark.util.Utils
 //import org.apache.spark.util.random.XORShiftRandom
 //import org.apache.spark.mllib.clustering.LocalKMeans
-import java.util.Random
-import org.apache.spark.mllib.clustering.KMeansModel
-
 import java.io._
+import java.util.Random
+
+import org.apache.spark.mllib.clustering.KMeansModel
 
 class CustomKMeans (
                      private var k: Int,
@@ -400,7 +402,7 @@ class CustomKMeans (
 
     var strResult = ""
     for (i <- 0 until arrResult.length) {
-      strResult += s"\nPola ke ${i+1} :("
+      strResult += s"\nPattern ${i+1} :("
       for (j <- 0 until arrResult(i).length) {
         if (arrResult(i)(j) != null) {
           strResult += "["
@@ -421,7 +423,7 @@ class CustomKMeans (
     }
 
 
-    this.outputText += "Result = " + strResult + "\n"
+    this.outputText += "Pattern Result : \n" + strResult + "\n"
     this.outputText += "KMeans converged in " + iteration + " iterations.\n"
     this.outputText += f"K-Means iteration time : $iterationTimeInSeconds%.3f seconds.\n"
     this.outputText += "Cost : " + f"$cost%.3f" + "\n"

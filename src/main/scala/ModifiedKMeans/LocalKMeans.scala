@@ -1,7 +1,9 @@
-import scala.util.Random
+package ModifiedKMeans
 
 import org.apache.spark.internal.Logging
 import org.apache.spark.mllib.linalg.Vectors
+
+import scala.util.Random
 
 /**
   * An utility object to run K-means locally. This is private to the ML package because it's used

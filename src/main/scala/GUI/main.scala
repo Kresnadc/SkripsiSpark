@@ -1,11 +1,11 @@
-import swing._
-import Swing._
-import TabbedPane._
-import scala.swing.BorderPanel.Position._
+package GUI
+
+import Controller._
 import org.apache.spark.{SparkConf, SparkContext}
-import javax.swing.JFileChooser
-import javax.swing.filechooser.FileNameExtensionFilter
-import javax.swing.Icon
+import scala.swing.BorderPanel.Position._
+import scala.swing.Swing._
+import scala.swing.TabbedPane._
+import scala.swing._
 
 object MainGUI {
   var sc: SparkContext = null
@@ -13,9 +13,16 @@ object MainGUI {
 
   val statsLabel = new Label("SparkContext Status : -")
 
+  val status_starting = "SparkContext Status : Starting..."
+  val status_stopped = "SparkContext Status : Stopped"
+  val status_error = "SparkContext Status : Error! SparkContext Stopped"
+  val status_running_idle = "SparkContext Status : -"
+  val status_running_processing = "SparkContext Status : Processing..."
+  val status_running_predicting = "SparkContext Status : Predicting..."
+
   def main(args: Array[String]): Unit = {
     val mainFrame = new MainFrame {
-      title = "Apache Spark 2.2.0 MLlib Eksperimen"
+      title = "Perangkat Lunak Demo Spark MLlib"
       preferredSize = new Dimension(1280, 900)
       visible = true
 
@@ -39,25 +46,23 @@ object MainGUI {
           contents += new MenuItem(Action("Reset SparkContext") {
             if (!sc.isStopped) {
               sc.stop()
-              statsLabel.text = "SparkContext Status : Stopped"
-            } else{
-              Dialog.showMessage(null,"SparkContext now starting... ", "No Active SparkContext ", Dialog.Message.Warning, null)
+              statsLabel.text = status_stopped
             }
             createSparkContext()
-            statsLabel.text = "SparkContext Status : -"
+            statsLabel.text = status_starting
             isSparkContextUsed = false
           })
 
           contents += new MenuItem(Action("Stop SparkContext") {
             sc.stop()
-            statsLabel.text = "SparkContext Status : Stopped"
+            statsLabel.text = status_stopped
             isSparkContextUsed = false
           })
 
           contents += new MenuItem(Action("Start SparkContext") {
             if (sc.isStopped) {
               createSparkContext()
-              statsLabel.text = "SparkContext Status : -"
+              statsLabel.text = status_starting
             }else{
               Dialog.showMessage(null,"SparkContext still running", "SparkContext still running", Dialog.Message.Warning, null)
             }
@@ -88,18 +93,18 @@ object MainGUI {
                     var test: Double = 1.0 - train
 
                     // Compute Model Naive Bayes
-                    NaiveBayesMain.startTraining( sc, inPath , saveModelPath , train, test)
-                    outputTextTA.text = NaiveBayesMain.outputText
+                    NaiveBayesController.startTraining( sc, inPath , saveModelPath , train, test)
+                    outputTextTA.text = NaiveBayesController.outputText
 
                     // Update Status
-                    statsLabel.text = "SparkContext Status : -"
+                    statsLabel.text = status_running_idle
                     if(sc.isStopped){
-                      statsLabel.text = "SparkContext Status : Stopped"
+                      statsLabel.text = status_stopped
                     }
                     isSparkContextUsed = false
                   }
                 }
-                statsLabel.text = "SparkContext Status : Processing..."
+                statsLabel.text = status_running_processing
                 thread1.start()
               } else{
                 Dialog.showMessage(null,"SparkContext still running!", "SparkContext is being used", Dialog.Message.Warning, null)
@@ -113,7 +118,7 @@ object MainGUI {
             val scrollOutputPredictTextTA = new ScrollPane(outputPredictTextTA){
               preferredSize = new Dimension(700, 280)
               maximumSize = new Dimension(700, 280)
-              border = CompoundBorder(TitledBorder(EtchedBorder, "(Sample) Predict Data Result "), EmptyBorder(5, 5, 5, 10))
+              border = CompoundBorder(TitledBorder(EtchedBorder, "Predict Result "), EmptyBorder(5, 5, 5, 10))
             }
 
             val predictBtn = new Button(Action("Predict"){
@@ -126,12 +131,12 @@ object MainGUI {
                     var outPath = outputPredictPath.text.trim
 
                     //Compute Prediction Naive Bayes
-                    outputPredictTextTA.text = NaiveBayesMain.predictByModel(sc, inPath, saveModelPath, outPath)
+                    outputPredictTextTA.text = NaiveBayesController.predictByModel(sc, inPath, saveModelPath, outPath)
 
                     //Update status
                     statsLabel.text = "SparkContext Status : -"
                     if(sc.isStopped){
-                      statsLabel.text = "SparkContext Status : Stopped"
+                      statsLabel.text = "SparkContext Status : Error! SparkContext Stopped"
                     }
                     isSparkContextUsed = false
                   }
@@ -168,7 +173,7 @@ object MainGUI {
                   }
                   contents += new FlowPanel(){
                     contents += new GridPanel(1,3){
-                      contents += new Label("Output Model Path : "){horizontalAlignment = Alignment.Left}
+                      contents += new Label("Output Path : "){horizontalAlignment = Alignment.Left}
                       contents += outputModelPath
                     }
                   }
@@ -203,7 +208,7 @@ object MainGUI {
                   }
                   contents += new FlowPanel() {
                     contents += new GridPanel(1, 3) {
-                      contents += new Label("Result Data Path : "){horizontalAlignment = Alignment.Left}
+                      contents += new Label("Output Data Path : "){horizontalAlignment = Alignment.Left}
                       contents += outputPredictPath
                     }
                   }
@@ -228,10 +233,10 @@ object MainGUI {
               val outputPath = new TextField("", 25){ maximumSize = new Dimension( 500, 25)}
               val clusterCB = new ComboBox(List.range(1, 20))
               val iterationCB = new ComboBox(List.range(1, 20))
-              val avgConfCheckBox = new CheckBox("Rata-rata")
+              val avgConfCheckBox = new CheckBox("Average")
               val minConfCheckBox = new CheckBox("Minimum")
               val maxConfCheckBox = new CheckBox("Maximum")
-              val devConfCheckBox = new CheckBox("Deviasi")
+              val devConfCheckBox = new CheckBox("Standar Deviation")
               val outputTextTA = new TextArea(){ text = ""; lineWrap = true}
               val scrollOutputTextTA = new ScrollPane(outputTextTA) {
                 border = CompoundBorder(TitledBorder(EtchedBorder, "Result"), EmptyBorder(5, 5, 5, 10))
@@ -252,8 +257,8 @@ object MainGUI {
                           devConfCheckBox.selected)
 
                       //Compute K-Means
-                      KMeansTester.runKMeans(sc, inPath, saveModelPath, numCluster, maxIteration, resultConf)
-                      outputTextTA.text = KMeansTester.outputText
+                      KMeansController.runKMeans(sc, inPath, saveModelPath, numCluster, maxIteration, resultConf)
+                      outputTextTA.text = KMeansController.outputText
 
                       // Status update
                       statsLabel.text = "SparkContext Status : -"
@@ -263,7 +268,7 @@ object MainGUI {
                       isSparkContextUsed = false
                     }
                   }
-                  statsLabel.text = "Executing"
+                  statsLabel.text = "SparkContext Status : Processing..."
                   thread1.start()
                 } else{
                   Dialog.showMessage(null,"SparkContext still running!", "SparkContext is being used", Dialog.Message.Warning, null)
@@ -305,7 +310,7 @@ object MainGUI {
                   }
                   contents += new FlowPanel(){
                     contents += new GridPanel(1,3){
-                      contents += new Label("Option : "){horizontalAlignment = Alignment.Right}
+                      contents += new Label("Pattern options : "){horizontalAlignment = Alignment.Right}
                       contents += new BoxPanel(Orientation.Vertical) {
                         border = CompoundBorder(TitledBorder(EtchedBorder, ""), EmptyBorder(5, 5, 5, 10))
                         contents.append(avgConfCheckBox, minConfCheckBox, maxConfCheckBox, devConfCheckBox)
@@ -356,8 +361,8 @@ object MainGUI {
                         devConfCheckBox.selected)
 
                       // Compute Statistic
-                      SummaryStatistic.run(sc, inPath , saveResultPath, resultConf)
-                      outputTextTA.text = SummaryStatistic.outputText
+                      StatisticController.runStatistic(sc, inPath , saveResultPath, resultConf)
+                      outputTextTA.text = StatisticController.outputText
 
                       // Update Status
                       statsLabel.text = "SparkContext Status : -"
@@ -453,8 +458,8 @@ object MainGUI {
                       var topPC: Int = topPCOption.selection.item
 
                       // Execute PCA
-                      PrincipalComponentAnalysis.runPCA(sc, inPath, saveResultPath, topPC)
-                      outputTextTA.text = PrincipalComponentAnalysis.outputText
+                      PCAController.runPCA(sc, inPath, saveResultPath, topPC)
+                      outputTextTA.text = PCAController.outputText
 
                       // UpdateStatus
                       statsLabel.text = "SparkContext Status : -"
@@ -491,7 +496,7 @@ object MainGUI {
                   }
                   contents += new FlowPanel() {
                     contents += new GridPanel(1, 3) {
-                      contents += new Label("Result Path : ") {
+                      contents += new Label("Output Path : ") {
                         horizontalAlignment = Alignment.Right
                       }
                       contents += outputResultPath
@@ -547,8 +552,8 @@ object MainGUI {
                       var numIteration: Int = iterationNum.selection.item
 
                       // Execute ALS
-                      AlternatingLeastSquares.startTraining(sc, inPath, saveModelPath, rank, numIteration)
-                      outputTextTA.text = AlternatingLeastSquares.outputText
+                      ALSController.startTraining(sc, inPath, saveModelPath, rank, numIteration)
+                      outputTextTA.text = ALSController.outputText
 
                       // Update Status
                       statsLabel.text = "SparkContext Status : -"
@@ -572,7 +577,7 @@ object MainGUI {
               val scrollOutputPredictTextTA = new ScrollPane(outputPredictTextTA){
                 preferredSize = new Dimension(700, 280)
                 maximumSize = new Dimension(700, 280)
-                border = CompoundBorder(TitledBorder(EtchedBorder, "(Sample) Predict Data Result "), EmptyBorder(5, 5, 5, 10))
+                border = CompoundBorder(TitledBorder(EtchedBorder, "Predict Result "), EmptyBorder(5, 5, 5, 10))
               }
 
               val predictBtn = new Button(Action("Predict"){
@@ -585,7 +590,7 @@ object MainGUI {
                       var outPath = outputPredictPath.text.trim
 
                       //Compute Prediction ALS
-                      outputPredictTextTA.text = AlternatingLeastSquares.predictByModel(sc, inPath, saveModelPath, outPath)
+                      outputPredictTextTA.text = ALSController.predictByModel(sc, inPath, saveModelPath, outPath)
 
                       //Update status
                       statsLabel.text = "SparkContext Status : -"
@@ -692,6 +697,7 @@ object MainGUI {
               // Genereate Model View variable
               val inputDataPath = new TextField("", 25)
               val outputModelPath = new TextField("", 25)
+              val numFeatOption = new ComboBox(List.range(0,30))
               val minDocOption = new ComboBox(List.range(0,10))
               val outputTextTA = new TextArea() {
                 text = ""; lineWrap = true
@@ -707,10 +713,11 @@ object MainGUI {
                       var inPath = inputDataPath.text.trim
                       var saveModelPath = outputModelPath.text.trim
                       var minDocFreq: Int = minDocOption.selection.item
+                      var numOfFeature: Int = numFeatOption.selection.item
 
                       // Compute TF-IDF
-                      TFIDF.runTFIDF(sc, inPath, saveModelPath, minDocFreq)
-                      outputTextTA.text = TFIDF.outputText
+                      TFIDFController.runTFIDF(sc, inPath, saveModelPath, numOfFeature, minDocFreq)
+                      outputTextTA.text = TFIDFController.outputText
 
                       // Update Status
                       statsLabel.text = "SparkContext Status : -"
@@ -747,10 +754,16 @@ object MainGUI {
                   }
                   contents += new FlowPanel() {
                     contents += new GridPanel(1, 3) {
-                      contents += new Label("Output Result Path : ") {
+                      contents += new Label("Output Path : ") {
                         horizontalAlignment = Alignment.Right
                       }
                       contents += outputModelPath
+                    }
+                  }
+                  contents += new FlowPanel() {
+                    contents += new GridPanel(1, 3) {
+                      contents += new Label("Num Of Feature: ")
+                      contents += numFeatOption
                     }
                   }
                   contents += new FlowPanel() {
@@ -788,9 +801,6 @@ object MainGUI {
           pages += new Page("TF-IDF", featureExt)
 
           createSparkContext()
-          if(sc.isStopped){
-            statsLabel.text = "SparkContext Status : Stopped"
-          }
         }
         val center = new ScrollPane(tabs)
         layout(center) = Center
@@ -800,40 +810,27 @@ object MainGUI {
     mainFrame.centerOnScreen()
   }
 
-  /**
-    * Method untuk File Chooser
-    * @param boolean
-    * @return
-    */
-  def runFileChooser(boolean: Boolean) : String = {
-    var chooser = new JFileChooser();
-    chooser.setCurrentDirectory(new java.io.File("."));
-    chooser.setDialogTitle("Open File");
-    if (boolean) {
-      chooser.setFileFilter(new FileNameExtensionFilter("Text File(.txt)","txt"))
-      chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-    }else{
-      chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-    }
-    chooser.setAcceptAllFileFilterUsed(true);
-    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-      System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
-      System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
-      (chooser.getSelectedFile() + "")
-    } else {
-      System.out.println("No Selection ");
-      ("")
-    }
+  def showWarning(): Unit ={
+    Dialog.showMessage(null,"SparkContext is still in use!", "SparkContext is being used", Dialog.Message.Warning, null)
   }
 
   def createSparkContext(): Unit ={
-    val conf = new SparkConf().setAppName("MLlib Spark 2.2.0")
-      .setMaster("local")
-    //      .setMaster("yarn")
-    //      .set("spark.executor.memory", "1g")
-    //      .set("spark.eventLog.enabled","true")
-    //      .set("spark.submit.deployMode", "client")
-    this.sc = new SparkContext(conf)
+    new Thread {
+      override def run {
+        statsLabel.text = status_starting
+        val conf = new SparkConf().setAppName("MLlib Spark 2.2.0")
+          .setMaster("yarn")
+          .set("spark.submit.deployMode", "client")
+          .set("spark.executor.memory", "5g")
+		  .set("spark.executor.memoryOverhead", "600")
+		  .set("spark.executor.instances", "2")
+        sc = new SparkContext(conf)
+        statsLabel.text = status_running_idle
+        if(sc.isStopped){
+          statsLabel.text = status_stopped
+        }
+      }
+    }.start()
   }
 }
 

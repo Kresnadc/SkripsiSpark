@@ -1,3 +1,5 @@
+package ModifiedKMeans
+
 import org.apache.spark.internal.Logging
 import org.apache.spark.mllib.linalg._
 //import org.apache.spark.mllib.linalg.BLAS.dot
@@ -57,9 +59,9 @@ object MLUtils extends Logging {
      */
     val precisionBound1 = 2.0 * EPSILON * sumSquaredNorm / (normDiff * normDiff + EPSILON)
     if (precisionBound1 < precision) {
-      sqDist = sumSquaredNorm - 2.0 * BLAS.dot(v1, v2)
+      sqDist = sumSquaredNorm - 2.0 * ModifiedKMeans.BLAS.dot(v1, v2)
     } else if (v1.isInstanceOf[SparseVector] || v2.isInstanceOf[SparseVector]) {
-      val dotValue = BLAS.dot(v1, v2)
+      val dotValue = ModifiedKMeans.BLAS.dot(v1, v2)
       sqDist = math.max(sumSquaredNorm - 2.0 * dotValue, 0.0)
       val precisionBound2 = EPSILON * (sumSquaredNorm + 2.0 * math.abs(dotValue)) /
         (sqDist + EPSILON)

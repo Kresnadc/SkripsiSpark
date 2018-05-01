@@ -1,48 +1,36 @@
-import org.apache.spark.{SparkConf, SparkContext}
+package Controller
+
+import org.apache.spark.SparkContext
 import org.apache.spark.mllib.classification.{NaiveBayes, NaiveBayesModel}
 import org.apache.spark.mllib.linalg.{Vector, Vectors}
 import org.apache.spark.mllib.regression.LabeledPoint
 import org.apache.spark.rdd.RDD
 
-
-object NaiveBayesMain {
+/**
+  *
+  */
+object NaiveBayesController {
   var outputText: String = ""
   var model: NaiveBayesModel = null;
-
-//  def main(args: Array[String]): Unit = {
-//  inPath = "E:/InputTest/Iris.csv"
-//  saveModelPath = "E:/Output/ModelNaive/"
-//  trainingPercent = 0.6
-//  testPercent = 0.4
-//    runNaiveBayes("E:/InputTest/Iris.csv", "E:/Output/ModelNaive/", 0.6, 0.4)
-//  }
 
   def startTraining(sc: SparkContext,
                     inPath: String,
                     saveModelPath: String,
                     trainingPercent: Double,
                     testPercent: Double): Unit = {
-    //Start Training
-    println("Start Training")
-
     // Load data file.
-    println("Load and parse the data file.")
     val data = preprocessingDataIrisCSV(sc, inPath)
 
-    //Split data training (Double cth: 40% => 0.4)
+    // Split data training
     val Array(training, test) = data.randomSplit(Array(trainingPercent, testPercent))
 
-    //Train model
+    // Train model
     val initStartTrainingTime = System.nanoTime()
     val modelNaive = NaiveBayes.train(training, lambda = 1.0, modelType = "multinomial")
     val trainingTimeInSecond = (System.nanoTime() - initStartTrainingTime)
 
-    //Test model with testPercent
+    // Test model with testPercent
     val initStartTestTime = System.nanoTime()
-    if(modelNaive == null){
-      println("model null")
-    }
-
     val predictionAndLabel = test.map(p =>
       (modelNaive.predict(p.features), p.label)
     )
@@ -53,29 +41,37 @@ object NaiveBayesMain {
     // Save and load model
     modelNaive.save(sc, saveModelPath)
     this.model = modelNaive
-    outputText += "Trained Model Saved! Location at '"+ saveModelPath +"'\n"
+    outputText = "Trained Model Saved! Location at '"+ saveModelPath +"'\n"
     outputText += "Data Labels : \n"
     this.model.labels.foreach(outputText += _ +"\n")
 
     outputText += "\nSplit data into training ("+ (trainingPercent * 100).toInt +
       "%) and test ("+ (testPercent * 100).toInt +"%)\n"
-    outputText += "Test Time : " + (trainingTimeInSecond / 1000000000.0) +"(Second) \n"
     outputText += "Training Time : " + (trainingTimeInSecond / 1000000000.0) +"(Second)\n"
+    outputText += "Test Time : " + (testTimeInSecond / 1000000000.0) +"(Second) \n"
   }
 
-  def predictByModel(sc: SparkContext, inputDataPath: String, savedModelPath: String, predictResultPath: String): String ={
+  def predictByModel(sc: SparkContext,
+                     inputDataPath: String,
+                     savedModelPath: String,
+                     predictResultPath: String): String ={
     val data = preprocessingPredictDataIrisCSV(sc, inputDataPath)
-
+    //Check model loaded
     if(this.model == null){
-      val model = NaiveBayesModel.load(sc, savedModelPath)
+      this.model = NaiveBayesModel.load(sc, savedModelPath)
     }
 
+    //Start predict time
+    val initStartPredictTime = System.nanoTime()
     var result = this.model.predict(data)
+    val predictTimeInSecond = (System.nanoTime() - initStartPredictTime)
+
     result.saveAsTextFile(predictResultPath)
 
     var predictionResult: String = "Result saved at "+ predictResultPath +
-      "\nSample preditction result(top 100):\n"
+      "\nPrediction result:\n"
     result.takeOrdered(100).foreach(kelas => predictionResult+= kelas + "\n")
+    predictionResult += "Prediction Time : " + (predictTimeInSecond / 1000000000.0) +"(Second)\n"
     predictionResult
   }
 

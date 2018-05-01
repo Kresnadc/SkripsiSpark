@@ -1,14 +1,15 @@
+package ModifiedKMeans
+
 import java.util.concurrent.atomic.AtomicLong
 
-import org.json4s._
-import org.json4s.JsonDSL._
-import org.json4s.jackson.JsonMethods._
-
 import org.apache.spark.internal.Logging
-import org.apache.spark.ml.{Estimator, Model}
 import org.apache.spark.ml.param.Param
+import org.apache.spark.ml.{Estimator, Model}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.Dataset
+import org.json4s.JsonDSL._
+import org.json4s._
+import org.json4s.jackson.JsonMethods._
 
 /**
   * A small wrapper that defines a training session for an estimator, and some methods to log

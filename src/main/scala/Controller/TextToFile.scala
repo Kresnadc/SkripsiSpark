@@ -1,3 +1,5 @@
+package Controller
+
 import java.io.{File, PrintWriter}
 
 object TextToFile {

@@ -1,3 +1,5 @@
+package ModifiedKMeans
+
 import java.nio.ByteBuffer
 import java.util.{Random => JavaRandom}
 
